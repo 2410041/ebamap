@@ -1,12 +1,30 @@
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+const mysql = require("mysql2/promise");
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+const db = mysql.createPool({
+    host: "db",          // docker-compose の service 名
+    user: "root",
+    password: "root",
+    database: "ebamap",
+});
+
+app.get("/api/stores", async (req, res) => {
+    try {
+        const [rows] = await db.query("SELECT * FROM stores");
+        res.json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Database query failed" });
+    }
+});
 
 app.get("/", (req, res) => {
     res.json({

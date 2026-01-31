@@ -26,6 +26,19 @@ app.get("/api/stores", async (req, res) => {
     }
 });
 
+app.get("/api/stores", async (req, res) => {
+    try {
+        const response = await axios.get("http://python:8000/stores");
+        res.json({
+            source: "node",
+            data: response.data
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: "Failed to fetch stores from Python API" });
+    }
+});
+
 app.get("/", (req, res) => {
     res.json({
         message: "Backend is running 🚀",

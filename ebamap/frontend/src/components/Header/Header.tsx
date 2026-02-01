@@ -1,0 +1,44 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import StoreInfoModal from "../StoreInfoModal/StoreInfoModal";
+import "./Header.css";
+
+type HeaderProps = {
+    title: string;
+    showBack?: boolean;
+};
+
+const Header = ({ title, showBack = false }: HeaderProps) => {
+    const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
+        <>
+            <header className="header">
+                <div className="header-left">
+                    {showBack && (
+                        <button className="back-button" onClick={() => navigate(-1)}>
+                            ←
+                        </button>
+                    )}
+                </div>
+
+                <h1 className="header-title">{title}</h1>
+
+                <div className="header-right">
+                    <button
+                        className="menu-button"
+                        onClick={() => setIsModalOpen(true)}
+                        title="店舗情報"
+                    >
+                        ≡
+                    </button>
+                </div>
+            </header>
+
+            <StoreInfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </>
+    );
+};
+
+export default Header;

@@ -1,0 +1,53 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import "./SearchResultPage.css";
+
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    location: string;
+}
+
+const SearchResultPage = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const query = location.state?.query || "";
+
+    // サンプルデータ
+    const products: Product[] = [
+        { id: 1, name: "低脂肪牛乳", price: 220, location: "売場番号: 3-1F" },
+        { id: 2, name: "成分牛乳", price: 250, location: "売場番号: 3-1F" },
+    ];
+
+    const handleProductClick = (product: Product) => {
+        navigate("/map", { state: { product } });
+    };
+
+    return (
+        <div className="search-result-page">
+            <Header title="検索結果" showBack />
+
+            <div className="search-result-content">
+                <SectionTitle title="検索結果" count={products.length} />
+
+                <div className="product-list">
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            location={product.location}
+                            variant="search"
+                            onViewMap={handleProductClick}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SearchResultPage;

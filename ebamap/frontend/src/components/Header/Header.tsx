@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../../context/StoreContext";
 import StoreInfoModal from "../StoreInfoModal/StoreInfoModal";
 import "./Header.css";
 
@@ -11,6 +12,7 @@ type HeaderProps = {
 // 画面上部の共通ヘッダー
 const Header = ({ title, showBack = false }: HeaderProps) => {
     const navigate = useNavigate();
+    const { isStoreSelected } = useStore();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -28,14 +30,16 @@ const Header = ({ title, showBack = false }: HeaderProps) => {
                 <h1 className="header-title">{title}</h1>
 
                 <div className="header-right">
-                    <button
-                        className="menu-button"
-                        // 店舗情報モーダルを開く
-                        onClick={() => setIsModalOpen(true)}
-                        title="店舗情報"
-                    >
-                        ≡
-                    </button>
+                    {isStoreSelected && (
+                        <button
+                            className="menu-button"
+                            // 店舗情報モーダルを開く
+                            onClick={() => setIsModalOpen(true)}
+                            title="店舗情報"
+                        >
+                            ≡
+                        </button>
+                    )}
                 </div>
             </header>
 

@@ -52,3 +52,12 @@
 .tab-item.active svg {
     stroke-width: 2.5;
 }
+
+.tab-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.tab-item.disabled:hover {
+    background-color: transparent;
+}

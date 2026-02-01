@@ -27,6 +27,7 @@ const SearchResultPage = () => {
             <div className="search-result-content">
                 <SectionTitle title="検索結果" count={products.length} />
 
+                {/* 商品一覧 */}
                 <div className="product-list">
                     {products.map((product) => (
                         <ProductCard

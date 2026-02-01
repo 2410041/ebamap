@@ -41,6 +41,7 @@ const DealsPage = () => {
             <div className="deals-content">
                 <SectionTitle title="セール・キャンペーン" />
 
+                {/* 特売一覧 */}
                 <div className="deals-list">
                     {deals.map((deal) => (
                         <ProductCard

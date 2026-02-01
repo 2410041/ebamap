@@ -27,6 +27,7 @@ const FavoritesPage = () => {
             <div className="favorites-content">
                 <SectionTitle title="保存した商品" count={favorites.length} />
 
+                {/* お気に入りがある場合のみ一覧表示 */}
                 {favorites.length > 0 ? (
                     <div className="favorites-list">
                         {favorites.map((product) => (

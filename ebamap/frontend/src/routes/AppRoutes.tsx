@@ -9,6 +9,7 @@ import DealsPage from "../pages/Deals/DealsPage";
 import HistoryPage from "../pages/History/HistoryPage";
 import SettingsPage from "../pages/Settings/SettingsPage";
 
+// 画面ルーティング定義
 const AppRoutes = () => {
     return (
         <Routes>

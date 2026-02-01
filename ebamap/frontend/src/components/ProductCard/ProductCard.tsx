@@ -26,11 +26,13 @@ const ProductCard = ({
 }: ProductCardProps) => {
     return (
         <div className={`product-card product-card-${variant}`}>
+            {/* 割引表示（特売カード用） */}
             {discount && <div className="product-badge">{discount}</div>}
 
             <div className="product-content">
                 <h3 className="product-name">{name}</h3>
 
+                {/* 検索結果表示 */}
                 {variant === "search" && (
                     <>
                         <p className="product-location">{location}</p>
@@ -43,6 +45,7 @@ const ProductCard = ({
                     </>
                 )}
 
+                {/* お気に入り表示 */}
                 {variant === "favorite" && (
                     <>
                         <p className="product-location">{location}</p>
@@ -55,6 +58,7 @@ const ProductCard = ({
                     </>
                 )}
 
+                {/* 特売表示 */}
                 {variant === "deal" && (
                     <>
                         {originalPrice && salePrice && (

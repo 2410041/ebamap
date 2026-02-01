@@ -10,6 +10,7 @@ const MapView = ({ location = "3-1F", showLegend = true }: MapViewProps) => {
     return (
         <div className="map-view-container">
             <div className="map-placeholder">
+                {/* マップのプレースホルダー表示 */}
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -18,6 +19,7 @@ const MapView = ({ location = "3-1F", showLegend = true }: MapViewProps) => {
                 <p className="map-location">売場番号: {location}</p>
             </div>
 
+            {/* 凡例の表示/非表示 */}
             {showLegend && (
                 <div className="map-legend">
                     <h4>フロアガイド</h4>

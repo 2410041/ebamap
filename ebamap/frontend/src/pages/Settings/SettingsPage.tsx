@@ -31,6 +31,7 @@ const SettingsPage = () => {
             <Header title="メニュー" />
 
             <div className="settings-content">
+                {/* 現在の店舗情報 */}
                 <div className="store-info-banner">
                     <div className="store-avatar">👤</div>
                     <div className="store-details">
@@ -39,6 +40,7 @@ const SettingsPage = () => {
                     </div>
                 </div>
 
+                {/* メニュー項目一覧 */}
                 <div className="menu-list">
                     {menuItems.map((item) => (
                         <div
@@ -55,6 +57,7 @@ const SettingsPage = () => {
                     ))}
                 </div>
 
+                {/* アプリバージョン */}
                 <div className="version-info">
                     <p>バージョン 1.0.0</p>
                 </div>

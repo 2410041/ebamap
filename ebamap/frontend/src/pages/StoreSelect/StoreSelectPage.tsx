@@ -24,6 +24,7 @@ const StoreSelectPage = () => {
 
             <div className="qr-scan-container">
                 <div className="qr-scan-box">
+                    {/* QRスキャン枠のダミー表示 */}
                     <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
                         <rect x="10" y="10" width="100" height="100" stroke="#2563eb" strokeWidth="3" strokeDasharray="8 8" rx="8" />
                         <path d="M10 30 L10 10 L30 10" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />

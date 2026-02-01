@@ -21,6 +21,7 @@ const MapPage = () => {
                     </div>
                 )}
 
+                {/* マップ表示 */}
                 <div className="map-container">
                     <MapView 
                         location={product?.location || "3-1F"}

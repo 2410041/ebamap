@@ -12,6 +12,7 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
     const navigate = useNavigate();
     const { currentStore } = useStore();
 
+    // 閉じている場合は何も描画しない
     if (!isOpen) return null;
 
     // 店舗変更: ストア選択画面へ
@@ -21,6 +22,7 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
     };
 
     return (
+        // 背景クリックで閉じる / 内部クリックは伝播停止
         <div className="modal-overlay" onClick={onClose}>
             <div className="store-info-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">

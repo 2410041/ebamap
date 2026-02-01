@@ -5,6 +5,7 @@ import "./BottomTab.css";
 const BottomTab = () => {
     return (
         <nav className="bottom-tab">
+            {/* 各タブは対応ページへ遷移 */}
             <NavLink to="/search" className={({ isActive }) => `tab-item ${isActive ? 'active' : ''}`}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"></circle>

@@ -28,6 +28,7 @@ const SearchPage = () => {
             <Header title="商品検索" />
 
             <div className="search-page-content">
+                {/* 検索入力 */}
                 <SearchInput
                     value={searchQuery}
                     onChange={setSearchQuery}
@@ -35,6 +36,7 @@ const SearchPage = () => {
                     placeholder="商品名を入力"
                 />
 
+                {/* カテゴリー選択 */}
                 <div className="category-tabs">
                     {categories.map((category) => (
                         <button
@@ -48,6 +50,7 @@ const SearchPage = () => {
                     <button className="category-tab">特産</button>
                 </div>
 
+                {/* よく使う検索候補 */}
                 <div className="search-suggestions">
                     <div className="suggestion-item" onClick={() => { setSearchQuery("牛乳"); handleSearch(); }}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

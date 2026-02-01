@@ -19,6 +19,7 @@ const HistoryPage = () => {
                     <h2>過去の検索</h2>
                 </div>
 
+                {/* 履歴がある場合のみ表示 */}
                 {history.length > 0 ? (
                     <div className="history-list">
                         {history.map((item) => (
@@ -43,6 +44,7 @@ const HistoryPage = () => {
                     </div>
                 )}
 
+                {/* 一括削除ボタン（UIのみ） */}
                 <button className="clear-all-btn">全履歴を削除</button>
             </div>
         </div>

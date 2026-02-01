@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc -b && vite build",
+        "build:lolipop": "tsc -b && vite build --base=/test/",
         "lint": "eslint .",
         "preview": "vite preview"
     },

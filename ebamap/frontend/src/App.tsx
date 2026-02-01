@@ -5,9 +5,12 @@ import BottomTab from "./components/BottomTab/BottomTab";
 
 // アプリ全体のルート構成（プロバイダー + ルーティング + 下部タブ）
 function App() {
+    // 環境変数から base path を取得（デフォルトは '/'）
+    const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+    
     return (
         <StoreProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={basename}>
                 <AppRoutes />
                 <BottomTab />
             </BrowserRouter>

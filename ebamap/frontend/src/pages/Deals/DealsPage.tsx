@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import "./DealsPage.css";
 
 interface DealProduct {
@@ -9,6 +11,7 @@ interface DealProduct {
     salePrice: number;
     discount: string;
     endDate: string;
+    location?: string;
 }
 
 const DealsPage = () => {
@@ -21,7 +24,8 @@ const DealsPage = () => {
             originalPrice: 500,
             salePrice: 350,
             discount: "30%OFF",
-            endDate: "今日まで"
+            endDate: "今日まで",
+            location: "売場番号: 1-1F"
         },
         {
             id: 2,
@@ -29,35 +33,36 @@ const DealsPage = () => {
             originalPrice: 800,
             salePrice: 600,
             discount: "25%OFF",
-            endDate: "明日まで"
+            endDate: "明日まで",
+            location: "売場番号: 2-1F"
         },
     ];
+
+    const handleDealClick = (deal: DealProduct) => {
+        navigate("/map", { state: { product: deal } });
+    };
 
     return (
         <div className="deals-page">
             <Header title="特売情報" />
 
             <div className="deals-content">
-                <div className="deals-header">
-                    <h2>セール・キャンペーン</h2>
-                </div>
+                <SectionTitle title="セール・キャンペーン" />
 
                 <div className="deals-list">
                     {deals.map((deal) => (
-                        <div key={deal.id} className="deal-card">
-                            <div className="deal-badge">{deal.discount}</div>
-                            <div className="deal-info">
-                                <h3>{deal.name}</h3>
-                                <div className="deal-price">
-                                    <span className="original-price">¥{deal.originalPrice}</span>
-                                    <span className="sale-price">¥{deal.salePrice}</span>
-                                </div>
-                                <p className="deal-end-date">{deal.endDate}</p>
-                            </div>
-                            <button className="deal-view-btn">
-                                マップで見る
-                            </button>
-                        </div>
+                        <ProductCard
+                            key={deal.id}
+                            id={deal.id}
+                            name={deal.name}
+                            location={deal.location || ""}
+                            originalPrice={deal.originalPrice}
+                            salePrice={deal.salePrice}
+                            discount={deal.discount}
+                            endDate={deal.endDate}
+                            variant="deal"
+                            onViewMap={() => handleDealClick(deal)}
+                        />
                     ))}
                 </div>
             </div>

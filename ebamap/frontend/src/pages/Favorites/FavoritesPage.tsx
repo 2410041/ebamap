@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import "./FavoritesPage.css";
 
 interface FavoriteProduct {
@@ -26,24 +28,19 @@ const FavoritesPage = () => {
             <Header title="お気に入り" />
 
             <div className="favorites-content">
-                <div className="favorites-header">
-                    <h2>保存した商品</h2>
-                    <p className="favorites-count">{favorites.length}件</p>
-                </div>
+                <SectionTitle title="保存した商品" count={favorites.length} />
 
                 {favorites.length > 0 ? (
                     <div className="favorites-list">
                         {favorites.map((product) => (
-                            <div key={product.id} className="favorite-item" onClick={() => handleProductClick(product)}>
-                                <div className="favorite-icon">❤️</div>
-                                <div className="favorite-info">
-                                    <h3>{product.name}</h3>
-                                    <p>{product.location}</p>
-                                </div>
-                                <button className="map-navigate-btn">
-                                    マップを見る
-                                </button>
-                            </div>
+                            <ProductCard
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                                location={product.location}
+                                variant="favorite"
+                                onViewMap={handleProductClick}
+                            />
                         ))}
                     </div>
                 ) : (

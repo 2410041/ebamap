@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import "./SearchResultPage.css";
 
 interface Product {
@@ -29,20 +31,18 @@ const SearchResultPage = () => {
             <Header title="検索結果" showBack />
 
             <div className="search-result-content">
-                <div className="result-header">
-                    <h2>検索結果</h2>
-                    <p className="result-count">{products.length}件の商品</p>
-                </div>
+                <SectionTitle title="検索結果" count={products.length} />
 
                 <div className="product-list">
                     {products.map((product) => (
-                        <div key={product.id} className="product-card" onClick={() => handleProductClick(product)}>
-                            <div className="product-info">
-                                <h3 className="product-name">{product.name}</h3>
-                                <p className="product-location">{product.location}</p>
-                            </div>
-                            <button className="map-button">売場地図</button>
-                        </div>
+                        <ProductCard
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            location={product.location}
+                            variant="search"
+                            onViewMap={handleProductClick}
+                        />
                     ))}
                 </div>
             </div>

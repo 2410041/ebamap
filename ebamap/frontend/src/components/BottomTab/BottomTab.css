@@ -1,54 +1,54 @@
 .bottom-tab {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-  height: 64px;
-  background: var(--color-bg-primary);
-  border-top: 1px solid var(--color-border);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    height: 64px;
+    background: var(--color-bg-primary);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 
-  z-index: 1000;
+    z-index: 1000;
 }
 
 .tab-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 
-  flex: 1;
-  height: 100%;
-  
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-text-light);
-  text-decoration: none;
-  
-  transition: all 0.2s ease;
+    flex: 1;
+    height: 100%;
+
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-light);
+    text-decoration: none;
+
+    transition: all 0.2s ease;
 }
 
 .tab-item svg {
-  width: 24px;
-  height: 24px;
-  transition: all 0.2s ease;
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease;
 }
 
 .tab-item:hover {
-  background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-secondary);
 }
 
 .tab-item.active {
-  color: var(--color-primary-blue);
-  font-weight: 600;
+    color: var(--color-primary-blue);
+    font-weight: 600;
 }
 
 .tab-item.active svg {
-  stroke-width: 2.5;
+    stroke-width: 2.5;
 }

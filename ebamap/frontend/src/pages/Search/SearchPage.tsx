@@ -23,7 +23,7 @@ const SearchPage = () => {
     return (
         <div className="search-page">
             <Header title="商品検索" />
-            
+
             <div className="search-page-content">
                 <div className="search-input-container">
                     <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

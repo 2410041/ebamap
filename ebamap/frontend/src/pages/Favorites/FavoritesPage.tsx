@@ -2,24 +2,21 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import type { Product } from "../../types/Product.ts";
 import "./FavoritesPage.css";
-
-interface FavoriteProduct {
-    id: number;
-    name: string;
-    location: string;
-}
 
 const FavoritesPage = () => {
     const navigate = useNavigate();
 
-    const favorites: FavoriteProduct[] = [
+    // お気に入り一覧（仮データ）
+    const favorites: Product[] = [
         { id: 1, name: "牛乳", location: "売場番号: 3-1F" },
         { id: 2, name: "パン", location: "売場番号: 2-1F" },
         { id: 3, name: "米", location: "売場番号: 5-1F" },
     ];
 
-    const handleProductClick = (product: FavoriteProduct) => {
+    // マップへ遷移
+    const handleProductClick = (product: Product) => {
         navigate("/map", { state: { product } });
     };
 

@@ -9,12 +9,14 @@ const SearchPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState("all");
 
+    // カテゴリータブ
     const categories = [
         { id: "all", label: "すべて" },
         { id: "sale", label: "特売" },
         { id: "bread", label: "パン" },
     ];
 
+    // 検索実行（結果ページへ遷移）
     const handleSearch = () => {
         if (searchQuery.trim()) {
             navigate("/result", { state: { query: searchQuery } });

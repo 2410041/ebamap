@@ -5,6 +5,7 @@ export interface MapViewProps {
     showLegend?: boolean;
 }
 
+// 店内マップのプレースホルダー表示
 const MapView = ({ location = "3-1F", showLegend = true }: MapViewProps) => {
     return (
         <div className="map-view-container">

@@ -2,22 +2,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import type { Product } from "../../types/Product.ts";
 import "./DealsPage.css";
-
-interface DealProduct {
-    id: number;
-    name: string;
-    originalPrice: number;
-    salePrice: number;
-    discount: string;
-    endDate: string;
-    location?: string;
-}
 
 const DealsPage = () => {
     const navigate = useNavigate();
 
-    const deals: DealProduct[] = [
+    // セール情報（仮データ）
+    const deals: Product[] = [
         {
             id: 1,
             name: "本日の特売",
@@ -38,7 +30,7 @@ const DealsPage = () => {
         },
     ];
 
-    const handleDealClick = (deal: DealProduct) => {
+    const handleDealClick = (deal: Product) => {
         navigate("/map", { state: { product: deal } });
     };
 

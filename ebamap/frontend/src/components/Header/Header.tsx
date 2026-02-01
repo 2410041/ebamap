@@ -8,6 +8,7 @@ type HeaderProps = {
     showBack?: boolean;
 };
 
+// 画面上部の共通ヘッダー
 const Header = ({ title, showBack = false }: HeaderProps) => {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,6 +37,7 @@ const Header = ({ title, showBack = false }: HeaderProps) => {
                 </div>
             </header>
 
+            {/* 店舗情報モーダル */}
             <StoreInfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
     );

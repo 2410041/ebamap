@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./BottomTab.css";
 
+// 画面下部のタブナビゲーション
 const BottomTab = () => {
     return (
         <nav className="bottom-tab">

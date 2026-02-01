@@ -4,6 +4,7 @@ import "./StoreSelectPage.css";
 const StoreSelectPage = () => {
     const navigate = useNavigate();
 
+    // 店舗決定後に検索画面へ
     const handleStoreSelect = () => {
         // 店舗選択後、検索画面へ遷移
         navigate("/search");

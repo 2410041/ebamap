@@ -6,6 +6,7 @@ export interface SectionTitleProps {
     count?: number;
 }
 
+// セクション見出し（件数・サブタイトル対応）
 const SectionTitle = ({ title, subtitle, count }: SectionTitleProps) => {
     return (
         <div className="section-title">

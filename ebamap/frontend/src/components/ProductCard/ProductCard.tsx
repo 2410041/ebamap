@@ -12,6 +12,7 @@ export interface ProductCardProps {
     variant?: "search" | "favorite" | "deal";
 }
 
+// 商品カード（検索・お気に入り・特売で表示切替）
 const ProductCard = ({
     id,
     name,

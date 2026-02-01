@@ -2,24 +2,20 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import type { Product } from "../../types/Product.ts";
 import "./SearchResultPage.css";
-
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    location: string;
-}
 
 const SearchResultPage = () => {
     const navigate = useNavigate();
 
+    // サンプルデータ（API接続時に置き換え）
     // サンプルデータ
     const products: Product[] = [
         { id: 1, name: "低脂肪牛乳", price: 220, location: "売場番号: 3-1F" },
         { id: 2, name: "成分牛乳", price: 250, location: "売場番号: 3-1F" },
     ];
 
+    // マップ画面へ遷移
     const handleProductClick = (product: Product) => {
         navigate("/map", { state: { product } });
     };

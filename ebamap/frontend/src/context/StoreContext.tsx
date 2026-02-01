@@ -1,11 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-
-interface Store {
-    id: string;
-    name: string;
-    openTime: string;
-    closeTime: string;
-}
+import type { Store } from "../types/Store.ts";
 
 interface StoreContextType {
     currentStore: Store;
@@ -14,6 +8,7 @@ interface StoreContextType {
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
+// 初期表示用の店舗情報
 const defaultStore: Store = {
     id: "store_001",
     name: "◇◇スーパー 本店",
@@ -22,11 +17,13 @@ const defaultStore: Store = {
 };
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    // 店舗情報をローカルストレージから復元
     const [currentStore, setCurrentStore] = useState<Store>(() => {
         const saved = localStorage.getItem("currentStore");
         return saved ? JSON.parse(saved) : defaultStore;
     });
 
+    // 店舗情報の更新と永続化
     const handleSetCurrentStore = (store: Store) => {
         setCurrentStore(store);
         localStorage.setItem("currentStore", JSON.stringify(store));

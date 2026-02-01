@@ -7,12 +7,14 @@ interface StoreInfoModalProps {
     onClose: () => void;
 }
 
+// ヘッダーメニューから開く店舗情報モーダル
 const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
     const navigate = useNavigate();
     const { currentStore } = useStore();
 
     if (!isOpen) return null;
 
+    // 店舗変更: ストア選択画面へ
     const handleChangeStore = () => {
         onClose();
         navigate("/");

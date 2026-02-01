@@ -1,17 +1,19 @@
 import { useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MapView from "../../components/MapView/MapView";
+import type { Product } from "../../types/Product.ts";
 import "./MapPage.css";
 
 const MapPage = () => {
     const location = useLocation();
-    const product = location.state?.product;
+    const product = location.state?.product as Product | undefined;
 
     return (
         <div className="map-page">
             <Header title="店内マップ" showBack />
 
             <div className="map-content">
+                {/* 商品情報がある場合のみ表示 */}
                 {product && (
                     <div className="product-location-info">
                         <h3>{product.name}</h3>

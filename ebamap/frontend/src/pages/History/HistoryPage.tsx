@@ -1,13 +1,9 @@
 import Header from "../../components/Header/Header";
+import type { HistoryItem } from "../../types/History.ts";
 import "./HistoryPage.css";
 
-interface HistoryItem {
-    id: number;
-    query: string;
-    date: string;
-}
-
 const HistoryPage = () => {
+    // 検索履歴（仮データ）
     const history: HistoryItem[] = [
         { id: 1, query: "牛乳", date: "2日前" },
         { id: 2, query: "パン", date: "3日前" },

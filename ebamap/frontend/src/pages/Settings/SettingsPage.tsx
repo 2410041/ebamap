@@ -5,6 +5,7 @@ import "./SettingsPage.css";
 const SettingsPage = () => {
     const navigate = useNavigate();
 
+    // メニュー一覧
     const menuItems = [
         { id: "search", icon: "🔍", label: "商品検索", path: "/search", color: "blue" },
         { id: "favorites", icon: "❤️", label: "お気に入り", path: "/favorites", color: "red" },
@@ -18,6 +19,7 @@ const SettingsPage = () => {
         { id: "change-store", icon: "🏪", label: "店舗を変更", path: "/", color: "purple" },
     ];
 
+    // 画面遷移
     const handleMenuClick = (item: typeof menuItems[0]) => {
         if (item.path) {
             navigate(item.path);

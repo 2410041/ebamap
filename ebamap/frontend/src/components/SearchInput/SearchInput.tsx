@@ -7,12 +7,14 @@ export interface SearchInputProps {
     placeholder?: string;
 }
 
+// 検索入力欄（Enterで検索）
 const SearchInput = ({
     value,
     onChange,
     onSearch,
     placeholder = "商品名を入力",
 }: SearchInputProps) => {
+    // Enterキーで検索を実行
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             onSearch();

@@ -3,6 +3,7 @@
 export interface Product {
   id: number;
   name: string;
+  campaignTitle?: string;
   location: string;
   price?: number;
   originalPrice?: number;

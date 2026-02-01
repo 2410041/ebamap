@@ -12,7 +12,8 @@ const DealsPage = () => {
     const deals: Product[] = [
         {
             id: 1,
-            name: "本日の特売",
+            name: "牛乳（1L）",          // ← 商品名
+            campaignTitle: "本日の特売", // ← セール名
             originalPrice: 500,
             salePrice: 350,
             discount: "30%OFF",
@@ -21,13 +22,14 @@ const DealsPage = () => {
         },
         {
             id: 2,
-            name: "週末セール",
+            name: "洗剤",
+            campaignTitle: "週末セール",
             originalPrice: 800,
             salePrice: 600,
             discount: "25%OFF",
             endDate: "明日まで",
             location: "売場番号: 2-1F"
-        },
+        }
     ];
 
     const handleDealClick = (deal: Product) => {

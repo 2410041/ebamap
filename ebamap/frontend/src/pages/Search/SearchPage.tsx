@@ -24,9 +24,9 @@ const SearchPage = () => {
     return (
         <div className="search-page">
             <Header title="商品検索" />
-            
+
             <div className="search-page-content">
-                <SearchInput 
+                <SearchInput
                     value={searchQuery}
                     onChange={setSearchQuery}
                     onSearch={handleSearch}

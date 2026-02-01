@@ -13,7 +13,7 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
     const { currentStore } = useStore();
 
     // 閉じている場合は何も描画しない
-    if (!isOpen) return null;
+    if (!isOpen || !currentStore) return null;
 
     // 店舗変更: ストア選択画面へ
     const handleChangeStore = () => {

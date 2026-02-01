@@ -78,3 +78,101 @@
 .store-select-button:active {
     transform: translateY(0);
 }
+
+/* モード切り替えボタン */
+.mode-toggle {
+    display: flex;
+    gap: 8px;
+    padding: 16px 24px;
+    justify-content: center;
+}
+
+.mode-button {
+    flex: 1;
+    max-width: 160px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mode-button.active {
+    background: white;
+    color: #667eea;
+}
+
+.mode-button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* エラーメッセージ */
+.error-message {
+    background: #fee;
+    color: #c00;
+    padding: 12px 24px;
+    margin: 0 24px 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* QRスキャナー */
+#qr-reader {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.qr-scan-help {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* 手動選択 */
+.manual-select-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    gap: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.select-label {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.store-select-dropdown {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid white;
+    background: white;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.store-select-dropdown:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}

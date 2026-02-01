@@ -1,13 +1,119 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Html5Qrcode } from "html5-qrcode";
+import { useStore } from "../../context/StoreContext";
+import type { Store } from "../../types/Store";
 import "./StoreSelectPage.css";
+
+// ダミー店舗データ（将来的にはAPIから取得）
+const AVAILABLE_STORES: Store[] = [
+    { id: "store_001", name: "◇◇スーパー 本店", openTime: "9:00", closeTime: "22:00" },
+    { id: "store_002", name: "◇◇スーパー 駅前店", openTime: "10:00", closeTime: "21:00" },
+    { id: "store_003", name: "◇◇スーパー 南口店", openTime: "8:00", closeTime: "23:00" },
+];
 
 const StoreSelectPage = () => {
     const navigate = useNavigate();
+    const { setCurrentStore } = useStore();
+    const [scannerMode, setScannerMode] = useState<"qr" | "manual">("qr");
+    const [selectedStoreId, setSelectedStoreId] = useState<string>("");
+    const [scanError, setScanError] = useState<string>("");
+    const scannerRef = useRef<Html5Qrcode | null>(null);
+    const qrReaderRef = useRef<HTMLDivElement>(null);
 
-    // 店舗決定後に検索画面へ
-    const handleStoreSelect = () => {
-        // 店舗選択後、検索画面へ遷移
-        navigate("/search");
+    // QRコードスキャナーの初期化
+    useEffect(() => {
+        if (scannerMode !== "qr" || !qrReaderRef.current) return;
+
+        const scanner = new Html5Qrcode("qr-reader");
+        scannerRef.current = scanner;
+
+        // スキャン開始
+        scanner
+            .start(
+                { facingMode: "environment" }, // 背面カメラを使用
+                {
+                    fps: 10, // フレームレート
+                    qrbox: { width: 250, height: 250 }, // スキャンエリアのサイズ
+                },
+                (decodedText) => {
+                    // QRコード読み取り成功
+                    handleQrCodeScanned(decodedText);
+                },
+                () => {
+                    // エラーは無視（継続的にスキャン）
+                }
+            )
+            .catch((err) => {
+                console.error("QRコードスキャナーの起動に失敗:", err);
+                setScanError("カメラの起動に失敗しました。手動選択をご利用ください。");
+            });
+
+        // クリーンアップ
+        return () => {
+            if (scannerRef.current?.isScanning) {
+                scannerRef.current
+                    .stop()
+                    .then(() => {
+                        scannerRef.current?.clear();
+                    })
+                    .catch((err) => console.error("スキャナー停止エラー:", err));
+            }
+        };
+    }, [scannerMode]);
+
+    // QRコード読み取り時の処理
+    const handleQrCodeScanned = (qrData: string) => {
+        try {
+            // QRコードから店舗IDを抽出（JSON形式を想定）
+            const data = JSON.parse(qrData);
+            const storeId = data.storeId || data.id;
+
+            // 店舗情報を検索
+            const store = AVAILABLE_STORES.find((s) => s.id === storeId);
+            if (store) {
+                setCurrentStore(store);
+                // スキャナーを停止してから遷移
+                if (scannerRef.current?.isScanning) {
+                    scannerRef.current.stop().then(() => {
+                        navigate("/search");
+                    });
+                } else {
+                    navigate("/search");
+                }
+            } else {
+                setScanError("店舗情報が見つかりませんでした");
+            }
+        } catch {
+            // JSON以外の場合は店舗IDとして扱う
+            const store = AVAILABLE_STORES.find((s) => s.id === qrData);
+            if (store) {
+                setCurrentStore(store);
+                if (scannerRef.current?.isScanning) {
+                    scannerRef.current.stop().then(() => {
+                        navigate("/search");
+                    });
+                } else {
+                    navigate("/search");
+                }
+            } else {
+                setScanError("無効なQRコードです");
+            }
+        }
+    };
+
+    // 手動選択時の処理
+    const handleManualSelect = () => {
+        if (!selectedStoreId) {
+            setScanError("店舗を選択してください");
+            return;
+        }
+
+        const store = AVAILABLE_STORES.find((s) => s.id === selectedStoreId);
+        if (store) {
+            setCurrentStore(store);
+            navigate("/search");
+        }
     };
 
     return (
@@ -19,25 +125,60 @@ const StoreSelectPage = () => {
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
                 </div>
-                <h1 className="header-title">店舗決定</h1>
+                <h1 className="header-title">店舗選択</h1>
             </div>
 
-            <div className="qr-scan-container">
-                <div className="qr-scan-box">
-                    {/* QRスキャン枠のダミー表示 */}
-                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-                        <rect x="10" y="10" width="100" height="100" stroke="#2563eb" strokeWidth="3" strokeDasharray="8 8" rx="8" />
-                        <path d="M10 30 L10 10 L30 10" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-                        <path d="M90 10 L110 10 L110 30" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-                        <path d="M110 90 L110 110 L90 110" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-                        <path d="M30 110 L10 110 L10 90" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-                    </svg>
-                    <p className="qr-scan-text">QRコードをスキャン</p>
-                </div>
-                <button className="store-select-button" onClick={handleStoreSelect}>
-                    店舗決定
+            <div className="mode-toggle">
+                <button
+                    className={`mode-button ${scannerMode === "qr" ? "active" : ""}`}
+                    onClick={() => {
+                        setScannerMode("qr");
+                        setScanError("");
+                    }}
+                >
+                    QRコード
+                </button>
+                <button
+                    className={`mode-button ${scannerMode === "manual" ? "active" : ""}`}
+                    onClick={() => {
+                        setScannerMode("manual");
+                        setScanError("");
+                    }}
+                >
+                    手動選択
                 </button>
             </div>
+
+            {scanError && <div className="error-message">{scanError}</div>}
+
+            {scannerMode === "qr" ? (
+                <div className="qr-scan-container">
+                    <div id="qr-reader" ref={qrReaderRef}></div>
+                    <p className="qr-scan-help">店舗のQRコードをカメラに向けてください</p>
+                </div>
+            ) : (
+                <div className="manual-select-container">
+                    <label htmlFor="store-select" className="select-label">
+                        店舗を選択
+                    </label>
+                    <select
+                        id="store-select"
+                        className="store-select-dropdown"
+                        value={selectedStoreId}
+                        onChange={(e) => setSelectedStoreId(e.target.value)}
+                    >
+                        <option value="">-- 店舗を選んでください --</option>
+                        {AVAILABLE_STORES.map((store) => (
+                            <option key={store.id} value={store.id}>
+                                {store.name} ({store.openTime} - {store.closeTime})
+                            </option>
+                        ))}
+                    </select>
+                    <button className="store-select-button" onClick={handleManualSelect}>
+                        この店舗で決定
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

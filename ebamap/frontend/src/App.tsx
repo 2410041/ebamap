@@ -1,13 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
+import { StoreProvider } from "./context/StoreContext";
 import AppRoutes from "./routes/AppRoutes";
 import BottomTab from "./components/BottomTab/BottomTab";
 
 function App() {
     return (
-        <BrowserRouter>
-            <AppRoutes />
-            <BottomTab />
-        </BrowserRouter>
+        <StoreProvider>
+            <BrowserRouter>
+                <AppRoutes />
+                <BottomTab />
+            </BrowserRouter>
+        </StoreProvider>
     );
 }
 

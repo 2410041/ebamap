@@ -1,5 +1,77 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
+import "./SearchPage.css";
+
 const SearchPage = () => {
-    return <div>Search</div>;
+    const navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState("");
+    const [activeCategory, setActiveCategory] = useState("all");
+
+    const categories = [
+        { id: "all", label: "すべて" },
+        { id: "sale", label: "特売" },
+        { id: "bread", label: "パン" },
+    ];
+
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            navigate("/result", { state: { query: searchQuery } });
+        }
+    };
+
+    return (
+        <div className="search-page">
+            <Header title="商品検索" />
+            
+            <div className="search-page-content">
+                <div className="search-input-container">
+                    <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder="商品名を入力"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+                    />
+                </div>
+
+                <div className="category-tabs">
+                    {categories.map((category) => (
+                        <button
+                            key={category.id}
+                            className={`category-tab ${activeCategory === category.id ? "active" : ""}`}
+                            onClick={() => setActiveCategory(category.id)}
+                        >
+                            {category.label}
+                        </button>
+                    ))}
+                    <button className="category-tab">特産</button>
+                </div>
+
+                <div className="search-suggestions">
+                    <div className="suggestion-item" onClick={() => { setSearchQuery("牛乳"); handleSearch(); }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>牛乳</span>
+                    </div>
+                    <div className="suggestion-item" onClick={() => { setSearchQuery("パン"); handleSearch(); }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>パン</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default SearchPage;

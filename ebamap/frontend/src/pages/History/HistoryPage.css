@@ -103,3 +103,29 @@
     padding: 48px 24px;
     color: var(--color-text-secondary);
 }
+
+/* 検索履歴全体（少し上寄せ） */
+.history-list {
+    margin-top: 8px;
+    /* きつければ 0〜4px に */
+}
+
+/* 各履歴アイテム */
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+/* × ボタン */
+.history-clear-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+}

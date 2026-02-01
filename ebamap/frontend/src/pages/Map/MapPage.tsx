@@ -22,7 +22,6 @@ const MapPage = () => {
                 <div className="map-container">
                     <MapView 
                         location={product?.location || "3-1F"}
-                        productName={product?.name}
                         showLegend={true}
                     />
                 </div>

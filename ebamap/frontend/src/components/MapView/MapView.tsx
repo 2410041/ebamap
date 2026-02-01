@@ -2,11 +2,10 @@ import "./MapView.css";
 
 export interface MapViewProps {
     location?: string;
-    productName?: string;
     showLegend?: boolean;
 }
 
-const MapView = ({ location = "3-1F", productName, showLegend = true }: MapViewProps) => {
+const MapView = ({ location = "3-1F", showLegend = true }: MapViewProps) => {
     return (
         <div className="map-view-container">
             <div className="map-placeholder">

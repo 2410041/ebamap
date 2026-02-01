@@ -3,7 +3,6 @@ import "./ProductCard.css";
 export interface ProductCardProps {
     id: number;
     name: string;
-    price?: number;
     location: string;
     discount?: string;
     originalPrice?: number;
@@ -16,7 +15,6 @@ export interface ProductCardProps {
 const ProductCard = ({
     id,
     name,
-    price,
     location,
     discount,
     originalPrice,

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
@@ -12,9 +12,7 @@ interface Product {
 }
 
 const SearchResultPage = () => {
-    const location = useLocation();
     const navigate = useNavigate();
-    const query = location.state?.query || "";
 
     // サンプルデータ
     const products: Product[] = [

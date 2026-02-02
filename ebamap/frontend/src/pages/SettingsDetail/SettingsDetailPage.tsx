@@ -61,6 +61,9 @@ const SettingsDetailPage = () => {
                         >
                             <option value="ja">日本語</option>
                             <option value="en">English</option>
+                            <option value="zh">中国語</option>
+                            <option value="vi">ベトナム語</option>
+                            <option value="ko">韓国語</option>
                         </select>
                     </div>
                 </div>

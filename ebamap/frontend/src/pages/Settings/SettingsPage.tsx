@@ -7,6 +7,15 @@ const SettingsPage = () => {
     const navigate = useNavigate();
     const { currentStore } = useStore();
 
+    // 時刻文字列(HH:mm)を分に変換
+    const toMinutes = (time: string) => {
+        const [hours, minutes] = time.split(":").map(Number);
+        if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+            return null;
+        }
+        return hours * 60 + minutes;
+    };
+
     if (!currentStore) {
         return (
             <div className="store-info-detail-page">
@@ -15,6 +24,17 @@ const SettingsPage = () => {
             </div>
         );
     }
+
+    // 営業中/営業時間外の判定
+    const openMinutes = toMinutes(currentStore.openTime);
+    const closeMinutes = toMinutes(currentStore.closeTime);
+    const now = new Date();
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+    const isOpen = openMinutes !== null && closeMinutes !== null
+        ? (closeMinutes > openMinutes
+            ? nowMinutes >= openMinutes && nowMinutes < closeMinutes
+            : nowMinutes >= openMinutes || nowMinutes < closeMinutes)
+        : false;
 
     // メニュー一覧
     const menuItems = [
@@ -47,7 +67,12 @@ const SettingsPage = () => {
                     <div className="store-avatar">👤</div>
                     <div className="store-details">
                         <h3>{currentStore.name}</h3>
-                        <p>営業中 {currentStore.openTime}-{currentStore.closeTime}</p>
+                        <p>
+                            <span className={`store-status ${isOpen ? "open" : "closed"}`}>
+                                {isOpen ? "営業中" : "営業時間外"}
+                            </span>
+                            {currentStore.openTime}-{currentStore.closeTime}
+                        </p>
                     </div>
                 </div>
 

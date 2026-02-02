@@ -11,11 +11,11 @@ const SettingsPage = () => {
         { id: "favorites", icon: "❤️", label: "お気に入り", path: "/favorites", color: "red" },
         { id: "history", icon: "🕐", label: "検索履歴", path: "/history", color: "green" },
         { id: "deals", icon: "🏷️", label: "特売情報", path: "/deals", color: "orange" },
-        { id: "store-info", icon: "ℹ️", label: "店舗情報", color: "purple" },
-        { id: "settings", icon: "⚙️", label: "設定", color: "gray" },
-        { id: "help", icon: "❓", label: "ヘルプ", color: "purple" },
-        { id: "terms", icon: "📄", label: "利用規約", color: "gray" },
-        { id: "privacy", icon: "🔒", label: "プライバシー", color: "gray" },
+        { id: "store-info", icon: "ℹ️", label: "店舗情報", path: "/store-info", color: "purple" },
+        { id: "settings", icon: "⚙️", label: "設定", path: "/settings", color: "gray" },
+        { id: "help", icon: "❓", label: "ヘルプ", path: "/help", color: "purple" },
+        { id: "terms", icon: "📄", label: "利用規約", path: "/terms", color: "gray" },
+        { id: "privacy", icon: "🔒", label: "プライバシー", path: "/privacy", color: "gray" },
         { id: "change-store", icon: "🏪", label: "店舗を変更", path: "/", color: "purple" },
     ];
 

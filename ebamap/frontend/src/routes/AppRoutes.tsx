@@ -8,6 +8,11 @@ import FavoritesPage from "../pages/Favorites/FavoritesPage";
 import DealsPage from "../pages/Deals/DealsPage";
 import HistoryPage from "../pages/History/HistoryPage";
 import SettingsPage from "../pages/Settings/SettingsPage";
+import StoreInfoDetailPage from "../pages/StoreInfoDetail/StoreInfoDetailPage";
+import SettingsDetailPage from "../pages/SettingsDetail/SettingsDetailPage";
+import HelpPage from "../pages/Help/HelpPage";
+import TermsPage from "../pages/Terms/TermsPage";
+import PrivacyPage from "../pages/Privacy/PrivacyPage";
 
 // 画面ルーティング定義
 const AppRoutes = () => {
@@ -21,6 +26,11 @@ const AppRoutes = () => {
             <Route path="/deals" element={<DealsPage />} />
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/menu" element={<SettingsPage />} />
+            <Route path="/store-info" element={<StoreInfoDetailPage />} />
+            <Route path="/settings" element={<SettingsDetailPage />} />
+            <Route path="/help" element={<HelpPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
     );
 };

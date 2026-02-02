@@ -7,9 +7,9 @@ import "./StoreSelectPage.css";
 
 // ダミー店舗データ（将来的にはAPIから取得）
 const AVAILABLE_STORES: Store[] = [
-    { id: "store_001", name: "◇◇スーパー 本店", openTime: "9:00", closeTime: "22:00" },
-    { id: "store_002", name: "◇◇スーパー 駅前店", openTime: "10:00", closeTime: "21:00" },
-    { id: "store_003", name: "◇◇スーパー 南口店", openTime: "8:00", closeTime: "23:00" },
+    { id: "store_001", name: "スーパーエバグリーン飛鳥店", openTime: "9:00", closeTime: "22:00" },
+    { id: "store_002", name: "スーパーエバグリーン膳夫店", openTime: "9:00", closeTime: "22:00" },
+    { id: "store_003", name: "スーパーエバグリーン田原本店", openTime: "9:00", closeTime: "22:00" },
 ];
 
 const StoreSelectPage = () => {

@@ -40,15 +40,15 @@ const StoreInfoDetailPage = () => {
                     <h2 className="section-title">アクセス</h2>
                     <div className="info-item">
                         <span className="info-label">住所</span>
-                        <span className="info-value">〒123-4567 東京都〇〇区〇〇 1-2-3</span>
+                        <span className="info-value">〒634-0131 奈良県高市郡明日香村御園 5-1</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">電話番号</span>
-                        <span className="info-value">03-1234-5678</span>
+                        <span className="info-value">0744-54-2800</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">最寄り駅</span>
-                        <span className="info-value">〇〇駅より徒歩5分</span>
+                        <span className="info-value">飛鳥駅より徒歩3分</span>
                     </div>
                 </div>
 
@@ -57,8 +57,7 @@ const StoreInfoDetailPage = () => {
                     <h2 className="section-title">サービス</h2>
                     <div className="service-tags">
                         <span className="service-tag">駐車場あり</span>
-                        <span className="service-tag">クレジット可</span>
-                        <span className="service-tag">電子マネー可</span>
+                        <span className="service-tag">QR決済(PayPayのみ)</span>
                         <span className="service-tag">ポイントカード</span>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ const StoreInfoDetailPage = () => {
                 {/* 休業日情報 */}
                 <div className="info-section">
                     <h2 className="section-title">定休日</h2>
-                    <p className="info-text">年中無休</p>
+                    <p className="info-text">1月1日と1月2日</p>
                 </div>
             </div>
         </div>

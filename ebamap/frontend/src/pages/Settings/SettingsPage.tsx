@@ -1,9 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import { useStore } from "../../context/StoreContext";
 import "./SettingsPage.css";
 
 const SettingsPage = () => {
     const navigate = useNavigate();
+    const { currentStore } = useStore();
+
+    if (!currentStore) {
+        return (
+            <div className="store-info-detail-page">
+                <Header title="店舗情報" showBack={true} />
+                <div className="no-store">店舗情報がありません</div>
+            </div>
+        );
+    }
 
     // メニュー一覧
     const menuItems = [
@@ -35,8 +46,8 @@ const SettingsPage = () => {
                 <div className="store-info-banner">
                     <div className="store-avatar">👤</div>
                     <div className="store-details">
-                        <h3>〇〇スーパー 本店</h3>
-                        <p>営業中 9:00-22:00</p>
+                        <h3>{currentStore.name}</h3>
+                        <p>営業中 {currentStore.openTime}-{currentStore.closeTime}</p>
                     </div>
                 </div>
 

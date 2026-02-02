@@ -40,15 +40,15 @@ const StoreInfoDetailPage = () => {
                     <h2 className="section-title">アクセス</h2>
                     <div className="info-item">
                         <span className="info-label">住所</span>
-                        <span className="info-value">〒634-0131 奈良県高市郡明日香村御園 5-1</span>
+                        <span className="info-value">{currentStore.address}</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">電話番号</span>
-                        <span className="info-value">0744-54-2800</span>
+                        <span className="info-value">{currentStore.tell}</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">最寄り駅</span>
-                        <span className="info-value">飛鳥駅より徒歩3分</span>
+                        <span className="info-value">{currentStore.nearestStation}</span>
                     </div>
                 </div>
 

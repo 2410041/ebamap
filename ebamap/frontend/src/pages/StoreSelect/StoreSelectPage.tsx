@@ -5,21 +5,25 @@ import { useStore } from "../../context/StoreContext";
 import type { Store } from "../../types/Store";
 import "./StoreSelectPage.css";
 
-// ダミー店舗データ（将来的にはAPIから取得）
+// ダミー店舗データ（後々APIから取得）
 const AVAILABLE_STORES: Store[] = [
     {
         id: "store_001", name: "スーパーエバグリーン飛鳥店", openTime: "9:00", closeTime: "22:00",
-        tell: "0744-54-2800", address: "〒634-0131 奈良県高市郡明日香村御園 5-1", nearestStation: "飛鳥駅より徒歩3分"
+        tell: "0744-54-2800", postCode: "〒634-0131", address: "奈良県高市郡明日香村御園 5-1",
+        nearestStation: "飛鳥駅", busTravelTimeMinutes: "徒歩約3分"
     },{
         id: "store_002", name: "スーパーエバグリーン膳夫店", openTime: "9:00", closeTime: "22:00",
-        tell: "0744-21-1300", address: "〒634-0000 奈良県高市郡明日香村膳夫 466", nearestStation: "JR香久山駅より徒歩10分"
+        tell: "0744-21-1300", postCode: "〒634-0012", address: "奈良県高市郡明日香村膳夫 466",
+        nearestStation: "JR香久山駅", busTravelTimeMinutes: "徒歩約10分"
     },{
         id: "store_003", name: "スーパーエバグリーン田原本店", openTime: "9:00", closeTime: "22:00",
-        tell: "0744-34-1500", address: "〒636-0246 奈良県磯城郡田原本町千代 766-1", nearestStation: "近鉄笠縫駅より徒歩13分"
+        tell: "0744-34-1500", postCode: "〒636-0246", address: "奈良県磯城郡田原本町千代 766-1",
+        nearestStation: "近鉄笠縫駅", busTravelTimeMinutes: "徒歩約13分"
     },{
         id: "store_004", name: "スーパーエバグリーン広陵店", openTime: "9:00", closeTime: "22:00",
-        tell: "0745-54-1050", address: "〒635-0822 奈良県北葛城郡広陵町平尾 710-1",
-        nearestStation: "近鉄大和高田駅疋相南口バス停(イオンモール橿原行き)より17分"
+        tell: "0745-54-1050", postCode: "〒635-0822", address: "奈良県北葛城郡広陵町平尾 710-1",
+        nearestStation: "近鉄大和高田駅", busStop: "疋相南口バス停", busDestination: "イオンモール橿原行き",
+        busTravelTimeMinutes: "約17分"
     }
 ];
 
@@ -81,9 +85,9 @@ const StoreSelectPage = () => {
             const storeId = data.storeId || data.id;
 
             // 店舗情報を検索
-            const store = AVAILABLE_STORES.find((s) => s.id === storeId);
-            if (store) {
-                setCurrentStore(store);
+            const stores = AVAILABLE_STORES.find((store) => store.id === storeId);
+            if (stores) {
+                setCurrentStore(stores);
                 // スキャナーを停止してから遷移
                 if (scannerRef.current?.isScanning) {
                     scannerRef.current.stop().then(() => {
@@ -97,9 +101,9 @@ const StoreSelectPage = () => {
             }
         } catch {
             // JSON以外の場合は店舗IDとして扱う
-            const store = AVAILABLE_STORES.find((s) => s.id === qrData);
-            if (store) {
-                setCurrentStore(store);
+            const stores = AVAILABLE_STORES.find((store) => store.id === qrData);
+            if (stores) {
+                setCurrentStore(stores);
                 if (scannerRef.current?.isScanning) {
                     scannerRef.current.stop().then(() => {
                         navigate("/search");
@@ -120,9 +124,9 @@ const StoreSelectPage = () => {
             return;
         }
 
-        const store = AVAILABLE_STORES.find((s) => s.id === selectedStoreId);
-        if (store) {
-            setCurrentStore(store);
+        const stores = AVAILABLE_STORES.find((store) => store.id === selectedStoreId);
+        if (stores) {
+            setCurrentStore(stores);
             navigate("/search");
         }
     };
@@ -176,12 +180,13 @@ const StoreSelectPage = () => {
                         id="store-select"
                         className="store-select-dropdown"
                         value={selectedStoreId}
-                        onChange={(e) => setSelectedStoreId(e.target.value)}
+                        onChange={(event) => setSelectedStoreId(event.target.value)}
                     >
                         <option value="">-- 店舗を選んでください --</option>
                         {AVAILABLE_STORES.map((store) => (
                             <option key={store.id} value={store.id}>
-                                {store.name} ({store.openTime} - {store.closeTime})
+                                {store.name}
+                                {/* ({store.openTime} - {store.closeTime}) */}
                             </option>
                         ))}
                     </select>

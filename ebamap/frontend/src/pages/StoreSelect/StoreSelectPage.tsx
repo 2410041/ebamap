@@ -8,19 +8,19 @@ import "./StoreSelectPage.css";
 // ダミー店舗データ（後々APIから取得）
 const AVAILABLE_STORES: Store[] = [
     {
-        id: "store_001", name: "スーパーエバグリーン飛鳥店", openTime: "9:00", closeTime: "22:00",
+        id: "store_001", name: "エバグリーン飛鳥店", openTime: "9:00", closeTime: "22:00",
         tell: "0744-54-2800", postCode: "〒634-0131", address: "奈良県高市郡明日香村御園 5-1",
         nearestStation: "飛鳥駅", busTravelTimeMinutes: "徒歩約3分"
     },{
-        id: "store_002", name: "スーパーエバグリーン膳夫店", openTime: "9:00", closeTime: "22:00",
+        id: "store_002", name: "エバグリーン膳夫店", openTime: "9:00", closeTime: "22:00",
         tell: "0744-21-1300", postCode: "〒634-0012", address: "奈良県高市郡明日香村膳夫 466",
         nearestStation: "JR香久山駅", busTravelTimeMinutes: "徒歩約10分"
     },{
-        id: "store_003", name: "スーパーエバグリーン田原本店", openTime: "9:00", closeTime: "22:00",
+        id: "store_003", name: "エバグリーン田原本店", openTime: "9:00", closeTime: "22:00",
         tell: "0744-34-1500", postCode: "〒636-0246", address: "奈良県磯城郡田原本町千代 766-1",
         nearestStation: "近鉄笠縫駅", busTravelTimeMinutes: "徒歩約13分"
     },{
-        id: "store_004", name: "スーパーエバグリーン広陵店", openTime: "9:00", closeTime: "22:00",
+        id: "store_004", name: "エバグリーン広陵店", openTime: "9:00", closeTime: "22:00",
         tell: "0745-54-1050", postCode: "〒635-0822", address: "奈良県北葛城郡広陵町平尾 710-1",
         nearestStation: "近鉄大和高田駅", busStop: "疋相南口バス停", busDestination: "イオンモール橿原行き",
         busTravelTimeMinutes: "約17分"

@@ -3,21 +3,26 @@ import mysql.connector
 
 app = FastAPI()
 
+
 def get_connection():
     return mysql.connector.connect(
-        host="db",          # docker-compose の service 名
+        # docker-compose の service 名
+        host="db",
         user="root",
         password="root",
-        database="ebamap"
+        database="ebamap",
     )
+
 
 @app.get("/")
 def root():
     return {"message": "Python API running 🐍"}
 
+
 @app.get("/calc")
 def calc():
     return {"result": 42}
+
 
 @app.get("/stores")
 def get_stores():

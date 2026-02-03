@@ -10,7 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createPool({
-    host: "db",          // docker-compose の service 名
+    // docker-compose の service 名
+    host: "db",
     user: "root",
     password: "root",
     database: "ebamap",

@@ -23,10 +23,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
 
     return (
-        <StoreContext.Provider value={{ 
-            currentStore, 
+        <StoreContext.Provider value={{
+            currentStore,
             isStoreSelected: currentStore !== null,
-            setCurrentStore: handleSetCurrentStore 
+            setCurrentStore: handleSetCurrentStore
         }}>
             {children}
         </StoreContext.Provider>

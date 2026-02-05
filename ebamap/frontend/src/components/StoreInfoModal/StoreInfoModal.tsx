@@ -24,7 +24,7 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
     return (
         // 背景クリックで閉じる / 内部クリックは伝播停止
         <div className="modal-overlay" onClick={onClose}>
-            <div className="store-info-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="store-info-modal" onClick={(event) => event.stopPropagation()}>
                 <div className="modal-header">
                     <h2>店舗情報</h2>
                     <button className="close-button" onClick={onClose}>

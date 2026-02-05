@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
@@ -12,6 +13,7 @@ import "./SearchResultPage.css";
  */
 const SearchResultPage = () => {
     const navigate = useNavigate();
+    const { t: translate } = useTranslation();
 
     // サンプルデータ（API接続時に置き換え）
     // サンプルデータ
@@ -31,10 +33,10 @@ const SearchResultPage = () => {
 
     return (
         <div className="search-result-page">
-            <Header title="検索結果" showBack />
+            <Header title={translate("searchResult.title")} showBack />
 
             <div className="search-result-content">
-                <SectionTitle title="検索結果" count={products.length} />
+                <SectionTitle title={translate("searchResult.title")} count={products.length} />
 
                 {/* 商品一覧 */}
                 <div className="product-list">

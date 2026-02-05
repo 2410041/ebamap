@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Html5Qrcode } from "html5-qrcode";
 import { useStore } from "../../context/StoreContext";
 import type { Store } from "../../types/Store";
@@ -38,6 +39,7 @@ const AVAILABLE_STORES: Store[] = [
 const StoreSelectPage = () => {
     const navigate = useNavigate();
     const { setCurrentStore } = useStore();
+    const { t: translate } = useTranslation();
     // スキャンモード管理：QRコード読み込みか手動選択か
     const [scannerMode, setScannerMode] = useState<"qr" | "manual">("qr");
     // 手動選択時に選択された店舗のID
@@ -74,7 +76,7 @@ const StoreSelectPage = () => {
             )
             .catch((err) => {
                 console.error("QRコードスキャナーの起動に失敗:", err);
-                setScanError("カメラの起動に失敗しました。手動選択をご利用ください。");
+                setScanError(translate("storeSelect.cameraError"));
             });
 
         // クリーンアップ
@@ -116,7 +118,7 @@ const StoreSelectPage = () => {
                     navigate("/search");
                 }
             } else {
-                setScanError("店舗情報が見つかりませんでした");
+                setScanError(translate("storeSelect.notFound"));
             }
         } catch {
             // JSON以外の場合は店舗IDとして扱う
@@ -131,7 +133,7 @@ const StoreSelectPage = () => {
                     navigate("/search");
                 }
             } else {
-                setScanError("無効なQRコードです");
+                setScanError(translate("storeSelect.invalidQr"));
             }
         }
     };
@@ -144,7 +146,7 @@ const StoreSelectPage = () => {
      */
     const handleManualSelect = () => {
         if (!selectedStoreId) {
-            setScanError("店舗を選択してください");
+            setScanError(translate("storeSelect.selectPlaceholder"));
             return;
         }
 
@@ -170,7 +172,7 @@ const StoreSelectPage = () => {
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
                 </div>
-                <h1 className="header-title">店舗選択</h1>
+                <h1 className="header-title">{translate("storeSelect.title")}</h1>
             </div>
 
             <div className="mode-toggle">
@@ -181,7 +183,7 @@ const StoreSelectPage = () => {
                         setScanError("");
                     }}
                 >
-                    QRコード
+                    {translate("storeSelect.qrCode")}
                 </button>
                 <button
                     className={`mode-button ${scannerMode === "manual" ? "active" : ""}`}
@@ -190,7 +192,7 @@ const StoreSelectPage = () => {
                         setScanError("");
                     }}
                 >
-                    手動選択
+                    {translate("storeSelect.manual")}
                 </button>
             </div>
 
@@ -199,12 +201,12 @@ const StoreSelectPage = () => {
             {scannerMode === "qr" ? (
                 <div className="qr-scan-container">
                     <div id="qr-reader" ref={qrReaderRef}></div>
-                    <p className="qr-scan-help">店舗のQRコードをカメラに向けてください</p>
+                    <p className="qr-scan-help">{translate("storeSelect.qrHelp")}</p>
                 </div>
             ) : (
                 <div className="manual-select-container">
                     <label htmlFor="store-select" className="select-label">
-                        店舗を選択
+                        {translate("storeSelect.selectLabel")}
                     </label>
                     <select
                         id="store-select"
@@ -212,7 +214,7 @@ const StoreSelectPage = () => {
                         value={selectedStoreId}
                         onChange={(event) => setSelectedStoreId(event.target.value)}
                     >
-                        <option value="">-- 店舗を選んでください --</option>
+                        <option value="">{translate("storeSelect.selectPlaceholder")}</option>
                         {AVAILABLE_STORES.map((store) => (
                             <option key={store.id} value={store.id}>
                                 {store.name}
@@ -220,7 +222,7 @@ const StoreSelectPage = () => {
                         ))}
                     </select>
                     <button className="store-select-button" onClick={handleManualSelect}>
-                        この店舗で決定
+                        {translate("storeSelect.selectButton")}
                     </button>
                 </div>
             )}

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import { useStore } from "../../context/StoreContext";
 import "./SettingsPage.css";
@@ -11,6 +12,7 @@ import "./SettingsPage.css";
 const SettingsPage = () => {
     const navigate = useNavigate();
     const { currentStore } = useStore();
+    const { t: translate } = useTranslation();
 
     // 時刻文字列(HH:mm)を分に変換
     /**
@@ -29,8 +31,8 @@ const SettingsPage = () => {
     if (!currentStore) {
         return (
             <div className="store-info-detail-page">
-                <Header title="店舗情報" showBack={true} />
-                <div className="no-store">店舗情報がありません</div>
+                <Header title={translate("storeInfoDetail.title")} showBack={true} />
+                <div className="no-store">{translate("storeInfoDetail.noStore")}</div>
             </div>
         );
     }
@@ -48,16 +50,16 @@ const SettingsPage = () => {
 
     // メニュー一覧
     const menuItems = [
-        { id: "search", icon: "🔍", label: "商品検索", path: "/search", color: "blue" },
-        { id: "favorites", icon: "❤️", label: "お気に入り", path: "/favorites", color: "red" },
-        { id: "history", icon: "🕐", label: "検索履歴", path: "/history", color: "green" },
-        { id: "deals", icon: "🏷️", label: "特売情報", path: "/deals", color: "orange" },
-        { id: "store-info", icon: "ℹ️", label: "店舗情報", path: "/store-info", color: "purple" },
-        { id: "settings", icon: "⚙️", label: "設定", path: "/settings", color: "gray" },
-        { id: "help", icon: "❓", label: "ヘルプ", path: "/help", color: "purple" },
-        { id: "terms", icon: "📄", label: "利用規約", path: "/terms", color: "gray" },
-        { id: "privacy", icon: "🔒", label: "プライバシー", path: "/privacy", color: "gray" },
-        { id: "change-store", icon: "🏪", label: "店舗を変更", path: "/", color: "purple" },
+        { id: "search", icon: "🔍", label: translate("search.title"), path: "/search", color: "blue" },
+        { id: "favorites", icon: "❤️", label: translate("favorites.title"), path: "/favorites", color: "red" },
+        { id: "history", icon: "🕐", label: translate("history.title"), path: "/history", color: "green" },
+        { id: "deals", icon: "🏷️", label: translate("deals.title"), path: "/deals", color: "orange" },
+        { id: "store-info", icon: "ℹ️", label: translate("storeInfoDetail.title"), path: "/store-info", color: "purple" },
+        { id: "settings", icon: "⚙️", label: translate("settingsDetail.title"), path: "/settings", color: "gray" },
+        { id: "help", icon: "❓", label: translate("help.title"), path: "/help", color: "purple" },
+        { id: "terms", icon: "📄", label: translate("terms.title"), path: "/terms", color: "gray" },
+        { id: "privacy", icon: "🔒", label: translate("privacy.title"), path: "/privacy", color: "gray" },
+        { id: "change-store", icon: "🏪", label: translate("settings.changeStore"), path: "/", color: "purple" },
     ];
 
     // 画面遷移
@@ -74,7 +76,7 @@ const SettingsPage = () => {
 
     return (
         <div className="settings-page">
-            <Header title="メニュー" />
+            <Header title={translate("settings.title")} />
 
             <div className="settings-content">
                 {/* 現在の店舗情報 */}
@@ -84,7 +86,7 @@ const SettingsPage = () => {
                         <h3>{currentStore.name}</h3>
                         <p>
                             <span className={`store-status ${isOpen ? "open" : "closed"}`}>
-                                {isOpen ? "営業中" : "営業時間外"}
+                                {isOpen ? translate("common.open") : translate("common.closed")}
                             </span>
                             {currentStore.openTime}-{currentStore.closeTime}
                         </p>

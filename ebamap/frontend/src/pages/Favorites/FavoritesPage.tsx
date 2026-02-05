@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
@@ -12,6 +13,7 @@ import "./FavoritesPage.css";
  */
 const FavoritesPage = () => {
     const navigate = useNavigate();
+    const { t: translate } = useTranslation();
 
     // お気に入り一覧（仮データ）
     const favorites: Product[] = [
@@ -31,10 +33,10 @@ const FavoritesPage = () => {
 
     return (
         <div className="favorites-page">
-            <Header title="お気に入り" />
+            <Header title={translate("favorites.title")} />
 
             <div className="favorites-content">
-                <SectionTitle title="保存した商品" count={favorites.length} />
+                <SectionTitle title={translate("favorites.saved")} count={favorites.length} />
 
                 {/* お気に入りがある場合のみ一覧表示 */}
                 {favorites.length > 0 ? (

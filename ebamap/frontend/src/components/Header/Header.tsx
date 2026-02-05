@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useStore } from "../../context/StoreContext";
 import StoreInfoModal from "../StoreInfoModal/StoreInfoModal";
 import "./Header.css";
@@ -17,6 +18,7 @@ const Header = ({ title, showBack = false }: HeaderProps) => {
     const navigate = useNavigate();
     const { isStoreSelected } = useStore();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { t: translate } = useTranslation();
 
     return (
         <>
@@ -38,7 +40,7 @@ const Header = ({ title, showBack = false }: HeaderProps) => {
                             className="menu-button"
                             // 店舗情報モーダルを開く
                             onClick={() => setIsModalOpen(true)}
-                            title="店舗情報"
+                            title={translate("header.storeInfo")}
                         >
                             ≡
                         </button>

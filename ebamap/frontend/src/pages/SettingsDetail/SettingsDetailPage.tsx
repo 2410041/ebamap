@@ -51,7 +51,7 @@ const SettingsDetailPage = () => {
                             <input
                                 type="checkbox"
                                 checked={notifications}
-                                onChange={(e) => setNotifications(e.target.checked)}
+                                onChange={(event) => setNotifications(event.target.checked)}
                             />
                             <span className="toggle-slider"></span>
                         </label>
@@ -65,7 +65,7 @@ const SettingsDetailPage = () => {
                             <input
                                 type="checkbox"
                                 checked={soundEnabled}
-                                onChange={(e) => setSoundEnabled(e.target.checked)}
+                                onChange={(event) => setSoundEnabled(event.target.checked)}
                             />
                             <span className="toggle-slider"></span>
                         </label>
@@ -86,7 +86,7 @@ const SettingsDetailPage = () => {
                             onChange={(event) => setLanguage(event.target.value)}
                         >
                             <option value="ja">日本語</option>
-                            <option value="en">English</option>
+                            <option value="en">英語</option>
                             <option value="zh">中国語</option>
                             <option value="vi">ベトナム語</option>
                             <option value="ko">韓国語</option>

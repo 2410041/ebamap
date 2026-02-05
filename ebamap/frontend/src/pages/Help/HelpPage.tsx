@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import "./HelpPage.css";
 
@@ -6,6 +7,7 @@ import "./HelpPage.css";
  * アプリの使い方やよくある質問、サポート情報を提供
  */
 const HelpPage = () => {
+    const { t: translate } = useTranslation();
     const faqs = [
         {
             id: 1,
@@ -36,52 +38,50 @@ const HelpPage = () => {
 
     return (
         <div className="help-page">
-            <Header title="ヘルプ" showBack={true} />
+            <Header title={translate("help.title")} showBack={true} />
 
             <div className="help-content">
                 {/* アプリの使い方 */}
                 <div className="help-section">
-                    <h2 className="section-title">アプリの使い方</h2>
+                    <h2 className="section-title">{translate("help.usage")}</h2>
                     <div className="help-step">
                         <div className="step-number">1</div>
                         <div className="step-content">
-                            <h3>店舗を選択</h3>
-                            <p>QRコードをスキャンするか、リストから店舗を選択します</p>
+                            <h3>{translate("help.step1Title")}</h3>
+                            <p>{translate("help.step1")}</p>
                         </div>
                     </div>
                     <div className="help-step">
                         <div className="step-number">2</div>
                         <div className="step-content">
-                            <h3>商品を検索</h3>
-                            <p>検索画面で商品名やカテゴリーから探します</p>
+                            <h3>{translate("help.step2Title")}</h3>
+                            <p>{translate("help.step2")}</p>
                         </div>
                     </div>
                     <div className="help-step">
                         <div className="step-number">3</div>
                         <div className="step-content">
-                            <h3>場所を確認</h3>
-                            <p>マップ画面で商品の陳列場所を確認できます</p>
+                            <h3>{translate("help.step3Title")}</h3>
+                            <p>{translate("help.step3")}</p>
                         </div>
                     </div>
                 </div>
 
                 {/* よくある質問 */}
                 <div className="help-section">
-                    <h2 className="section-title">よくある質問</h2>
-                    {faqs.map((faq) => (
-                        <details key={faq.id} className="faq-item">
-                            <summary className="faq-question">{faq.question}</summary>
-                            <p className="faq-answer">{faq.answer}</p>
+                    <h2 className="section-title">{translate("help.faq")}</h2>
+                    {[1, 2, 3, 4, 5].map((i) => (
+                        <details key={i} className="faq-item">
+                            <summary className="faq-question">{translate(`help.faq${i}Q`)}</summary>
+                            <p className="faq-answer">{translate(`help.faq${i}A`)}</p>
                         </details>
                     ))}
                 </div>
 
                 {/* お問い合わせ */}
                 <div className="help-section">
-                    <h2 className="section-title">お問い合わせ</h2>
-                    <p className="contact-text">
-                        その他のご質問は、以下のメールアドレスまでお問い合わせください。
-                    </p>
+                    <h2 className="section-title">{translate("help.contact")}</h2>
+                    <p className="contact-text">{translate("help.contactText")}</p>
                     <a href="mailto:support@example.com" className="contact-email">
                         support@example.com
                     </a>

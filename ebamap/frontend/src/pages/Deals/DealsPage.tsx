@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
@@ -11,6 +12,7 @@ import "./DealsPage.css";
  */
 const DealsPage = () => {
     const navigate = useNavigate();
+    const { t: translate } = useTranslation();
 
     // セール情報（仮データ）
     const deals: Product[] = [
@@ -47,10 +49,10 @@ const DealsPage = () => {
 
     return (
         <div className="deals-page">
-            <Header title="特売情報" />
+            <Header title={translate("deals.title")} />
 
             <div className="deals-content">
-                <SectionTitle title="セール・キャンペーン" />
+                <SectionTitle title={translate("deals.campaign")} />
 
                 {/* 特売一覧 */}
                 <div className="deals-list">

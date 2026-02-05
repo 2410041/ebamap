@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useStore } from "../../context/StoreContext";
 import "./BottomTab.css";
 
@@ -6,6 +7,7 @@ import "./BottomTab.css";
 const BottomTab = () => {
     const { isStoreSelected } = useStore();
     const navigate = useNavigate();
+    const { t: translate } = useTranslation();
 
     // 店舗未選択時はStoreSelectPageへリダイレクト
     const handleTabClick = (event: React.MouseEvent) => {
@@ -29,7 +31,7 @@ const BottomTab = () => {
                     {/* 虫眼鏡の持ち手部分 */}
                     <path d="m21 21-4.35-4.35"></path>
                 </svg>
-                <span>検索</span>
+                <span>{translate("navigation.search")}</span>
             </NavLink>
 
             <NavLink 
@@ -43,7 +45,7 @@ const BottomTab = () => {
                     {/* 地図上の区分線：グリッド効果 */}
                     <path d="M9 3v15M15 6v15"></path>
                 </svg>
-                <span>マップ</span>
+                <span>{translate("navigation.map")}</span>
             </NavLink>
 
             <NavLink 
@@ -55,7 +57,7 @@ const BottomTab = () => {
                     {/* ハートの形状：左右の円形と下部の三角形で構成 */}
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
-                <span>お気に入り</span>
+                <span>{translate("navigation.favorites")}</span>
             </NavLink>
 
             <NavLink 
@@ -69,7 +71,7 @@ const BottomTab = () => {
                     {/* タグ上の穴（リボンを通す部分） */}
                     <circle cx="7" cy="7" r="1" fill="currentColor"></circle>
                 </svg>
-                <span>特売</span>
+                <span>{translate("navigation.deals")}</span>
             </NavLink>
 
             <NavLink 
@@ -83,7 +85,7 @@ const BottomTab = () => {
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
-                <span>メニュー</span>
+                <span>{translate("navigation.menu")}</span>
             </NavLink>
         </nav>
     );

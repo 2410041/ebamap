@@ -3,11 +3,13 @@
  * ユーザーが過去に検索したキーワードの履歴を表示
  * 履歴から再検索できる
  */
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import type { HistoryItem } from "../../types/History.ts";
 import "./HistoryPage.css";
 
 const HistoryPage = () => {
+    const { t: translate } = useTranslation();
     // 検索履歴（仮データ）
     const history: HistoryItem[] = [
         { id: 1, query: "牛乳", date: "2日前" },
@@ -17,11 +19,11 @@ const HistoryPage = () => {
 
     return (
         <div className="history-page">
-            <Header title="検索履歴" />
+            <Header title={translate("history.title")} />
 
             <div className="history-content">
                 <div className="history-header">
-                    <h2>過去の検索</h2>
+                    <h2>{translate("history.past")}</h2>
                 </div>
 
                 {/* 履歴がある場合のみ表示 */}
@@ -45,12 +47,12 @@ const HistoryPage = () => {
                     </div>
                 ) : (
                     <div className="empty-state">
-                        <p>検索履歴はありません</p>
+                        <p>{translate("history.empty")}</p>
                     </div>
                 )}
 
                 {/* 一括削除ボタン（UIのみ） */}
-                <button className="clear-all-btn">全履歴を削除</button>
+                <button className="clear-all-btn">{translate("history.clearAll")}</button>
             </div>
         </div>
     );

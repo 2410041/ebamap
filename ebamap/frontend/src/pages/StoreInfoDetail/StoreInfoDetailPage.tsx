@@ -89,7 +89,7 @@ const StoreInfoDetailPage = () => {
                 {/* 休業日情報 */}
                 <div className="info-section">
                     <h2 className="section-title">定休日</h2>
-                    <p className="info-text">1月1日と1月2日</p>
+                    <p className="info-text">1月1日、1月2日</p>
                 </div>
             </div>
         </div>

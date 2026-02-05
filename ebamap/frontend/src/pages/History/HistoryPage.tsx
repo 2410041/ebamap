@@ -1,3 +1,8 @@
+/**
+ * 検索履歴ページ
+ * ユーザーが過去に検索したキーワードの履歴を表示
+ * 履歴から再検索できる
+ */
 import Header from "../../components/Header/Header";
 import type { HistoryItem } from "../../types/History.ts";
 import "./HistoryPage.css";

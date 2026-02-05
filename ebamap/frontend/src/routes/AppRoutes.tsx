@@ -14,7 +14,25 @@ import HelpPage from "../pages/Help/HelpPage";
 import TermsPage from "../pages/Terms/TermsPage";
 import PrivacyPage from "../pages/Privacy/PrivacyPage";
 
-// 画面ルーティング定義
+/**
+ * アプリケーション全体のルーティング定義コンポーネント
+ * 各ページと URL パスのマッピングを定義
+ * 
+ * ルートパス一覧:
+ * / - 店舗選択ページ（アプリ起動時の最初のページ）
+ * /search - 商品検索ページ
+ * /result - 検索結果ページ
+ * /map - 店内マップページ（売場位置表示）
+ * /favorites - お気に入りページ
+ * /deals - 特売情報ページ
+ * /history - 検索履歴ページ
+ * /menu - メニュー/ホームページ
+ * /store-info - 店舗詳細情報ページ
+ * /settings - 設定詳細ページ
+ * /help - ヘルプページ
+ * /terms - 利用規約ページ
+ * /privacy - プライバシーポリシーページ
+ */
 const AppRoutes = () => {
     return (
         <Routes>

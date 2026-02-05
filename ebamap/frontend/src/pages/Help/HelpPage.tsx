@@ -1,7 +1,10 @@
 import Header from "../../components/Header/Header";
 import "./HelpPage.css";
 
-// ヘルプページ
+/**
+ * ヘルプページ
+ * アプリの使い方やよくある質問、サポート情報を提供
+ */
 const HelpPage = () => {
     const faqs = [
         {

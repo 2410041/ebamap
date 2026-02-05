@@ -1,3 +1,8 @@
+/**
+ * 店内地図ページ
+ * 指定された売場の店内マップと案内を表示
+ * 商品の売場番号に基づいてマップを表示
+ */
 import { useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MapView from "../../components/MapView/MapView";

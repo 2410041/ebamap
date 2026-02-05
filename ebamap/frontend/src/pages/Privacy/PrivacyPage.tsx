@@ -1,7 +1,10 @@
 import Header from "../../components/Header/Header";
 import "./PrivacyPage.css";
 
-// プライバシーポリシーページ
+/**
+ * プライバシーポリシーページ
+ * ユーザーデータの取り扱いとプライバシー保護方針を説明
+ */
 const PrivacyPage = () => {
     return (
         <div className="privacy-page">

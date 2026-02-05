@@ -15,8 +15,13 @@ const SearchInput = ({
     placeholder = "商品名を入力",
 }: SearchInputProps) => {
     // Enterキーで検索を実行
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
+    /**
+     * Enterキープレス時のハンドラー
+     * @param {React.KeyboardEvent} event - キーボードイベント
+     * Enterキーが押された場合、onSearchコールバックを実行
+     */
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
             onSearch();
         }
     };
@@ -25,7 +30,9 @@ const SearchInput = ({
         <div className="search-input-container">
             {/* 左側の検索アイコン */}
             <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                {/* 虫眼鏡のレンズ部分：中心(11,11)、半径8の円 */}
                 <circle cx="11" cy="11" r="8"></circle>
+                {/* 虫眼鏡の持ち手部分：座標(21,21)から左上へ斜線 */}
                 <path d="m21 21-4.35-4.35"></path>
             </svg>
             <input
@@ -33,7 +40,7 @@ const SearchInput = ({
                 className="search-input"
                 placeholder={placeholder}
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(event) => onChange(event.target.value)}
                 // Enterキーで検索
                 onKeyPress={handleKeyPress}
             />

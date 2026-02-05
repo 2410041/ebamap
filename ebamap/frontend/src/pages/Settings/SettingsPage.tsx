@@ -3,11 +3,21 @@ import Header from "../../components/Header/Header";
 import { useStore } from "../../context/StoreContext";
 import "./SettingsPage.css";
 
+/**
+ * メニュー/設定ホームページ
+ * 主要機能（検索、お気に入り、設定など）へのアクセスポイント
+ * 現在選択されている店舗情報も表示
+ */
 const SettingsPage = () => {
     const navigate = useNavigate();
     const { currentStore } = useStore();
 
     // 時刻文字列(HH:mm)を分に変換
+    /**
+     * 営業時間判定用にHH:mm形式の時刻を分単位に変換
+     * @param {string} time - HH:mm形式の時刻文字列
+     * @returns {number|null} 分単位の値、パース失敗時はnull
+     */
     const toMinutes = (time: string) => {
         const [hours, minutes] = time.split(":").map(Number);
         if (Number.isNaN(hours) || Number.isNaN(minutes)) {
@@ -51,6 +61,11 @@ const SettingsPage = () => {
     ];
 
     // 画面遷移
+    /**
+     * メニューアイテムクリック時のハンドラー
+     * クリックされたメニューの path に基づいて画面遷移
+     * @param {Object} item - メニューアイテムオブジェクト
+     */
     const handleMenuClick = (item: typeof menuItems[0]) => {
         if (item.path) {
             navigate(item.path);

@@ -12,7 +12,9 @@ const MapView = ({ location = "3-1F", showLegend = true }: MapViewProps) => {
             <div className="map-placeholder">
                 {/* マップのプレースホルダー表示 */}
                 <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    {/* 位置マーカーのドロップシェイプ（涙滴型の枠） */}
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    {/* マーカー中心の円（現在地を示す） */}
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 <p>店内マップ</p>

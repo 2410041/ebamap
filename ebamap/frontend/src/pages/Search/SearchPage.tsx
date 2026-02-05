@@ -4,12 +4,18 @@ import Header from "../../components/Header/Header";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import "./SearchPage.css";
 
+/**
+ * 商品検索ページ
+ * ユーザーがキーワードで商品を検索し、検索結果ページへ遷移
+ */
 const SearchPage = () => {
     const navigate = useNavigate();
+    // ユーザーが入力した検索キーワード
     const [searchQuery, setSearchQuery] = useState("");
+    // 選択中のカテゴリタブ（すべて、特売など）
     const [activeCategory, setActiveCategory] = useState("all");
 
-    // カテゴリータブ
+    // カテゴリータブのメタデータ
     const categories = [
         { id: "all", label: "すべて" },
         { id: "sale", label: "特売" },
@@ -17,6 +23,10 @@ const SearchPage = () => {
     ];
 
     // 検索実行（結果ページへ遷移）
+    /**
+     * 検索キーワードが空でない場合、結果ページへ遷移
+     * 検索キーワードはlocationのstateで結果ページに渡される
+     */
     const handleSearch = () => {
         if (searchQuery.trim()) {
             navigate("/result", { state: { query: searchQuery } });

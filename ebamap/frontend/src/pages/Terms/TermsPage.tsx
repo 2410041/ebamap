@@ -1,7 +1,10 @@
 import Header from "../../components/Header/Header";
 import "./TermsPage.css";
 
-// 利用規約ページ
+/**
+ * 利用規約ページ
+ * アプリの利用規約、サービス条件を表示
+ */
 const TermsPage = () => {
     return (
         <div className="terms-page">

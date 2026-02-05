@@ -5,7 +5,15 @@ import { useStore } from "../../context/StoreContext";
 import type { Store } from "../../types/Store";
 import "./StoreSelectPage.css";
 
-// ダミー店舗データ（後々APIから取得）
+/**
+ * 店舗選択ページ
+ * アプリ起動時に表示される最初のページ
+ * QRコードスキャンまたは手動選択で店舗を選択
+ * 選択後、selectedStore をContext に保存して他ページへ遷移
+ */
+
+// アプリで利用可能な店舗マスターデータ（後々はAPIから取得）
+// 各店舗はID・名前・営業時間・住所情報を持つ
 const AVAILABLE_STORES: Store[] = [
     {
         id: "store_001", name: "エバグリーン飛鳥店", openTime: "9:00", closeTime: "21:50",
@@ -30,10 +38,15 @@ const AVAILABLE_STORES: Store[] = [
 const StoreSelectPage = () => {
     const navigate = useNavigate();
     const { setCurrentStore } = useStore();
+    // スキャンモード管理：QRコード読み込みか手動選択か
     const [scannerMode, setScannerMode] = useState<"qr" | "manual">("qr");
+    // 手動選択時に選択された店舗のID
     const [selectedStoreId, setSelectedStoreId] = useState<string>("");
+    // QRスキャンまたは入力エラーのメッセージ
     const [scanError, setScanError] = useState<string>("");
+    // Html5Qrcodeライブラリのインスタンス参照
     const scannerRef = useRef<Html5Qrcode | null>(null);
+    // QRコード表示用のDOM要素参照
     const qrReaderRef = useRef<HTMLDivElement>(null);
 
     // QRコードスキャナーの初期化
@@ -77,7 +90,13 @@ const StoreSelectPage = () => {
         };
     }, [scannerMode]);
 
-    // QRコード読み取り時の処理
+    /**
+     * QRコード読み取り時の処理
+     * @param {string} qrData - スキャンされたQRコードの内容
+     * JSON形式: { storeId: "store_001" } または単純な文字列形式に対応
+     * 成功時: 店舗情報をContextに保存して/searchページへ遷移
+     * 失敗時: エラーメッセージを表示して再スキャン可能にする
+     */
     const handleQrCodeScanned = (qrData: string) => {
         try {
             // QRコードから店舗IDを抽出（JSON形式を想定）
@@ -117,7 +136,12 @@ const StoreSelectPage = () => {
         }
     };
 
-    // 手動選択時の処理
+    /**
+     * 手動選択ボタンの処理
+     * 選択されたdropdownから店舗IDを取得
+     * AVAILABLE_STORESから該当店舗を検索してContextに保存
+     * その後、/searchページへ遷移
+     */
     const handleManualSelect = () => {
         if (!selectedStoreId) {
             setScanError("店舗を選択してください");
@@ -131,6 +155,12 @@ const StoreSelectPage = () => {
         }
     };
 
+    /**
+     * UI Render
+     * 2つのモード（QRコード / 手動選択）を表示
+     * - QR: Html5Qrcodeライブラリを使用したバックカメラスキャン
+     * - 手動: selectタグで店舗一覧から選択
+     */
     return (
         <div className="store-select-page">
             <div className="store-select-header">
@@ -186,7 +216,6 @@ const StoreSelectPage = () => {
                         {AVAILABLE_STORES.map((store) => (
                             <option key={store.id} value={store.id}>
                                 {store.name}
-                                {/* ({store.openTime} - {store.closeTime}) */}
                             </option>
                         ))}
                     </select>

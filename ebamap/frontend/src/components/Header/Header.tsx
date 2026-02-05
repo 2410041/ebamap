@@ -9,7 +9,10 @@ type HeaderProps = {
     showBack?: boolean;
 };
 
-// 画面上部の共通ヘッダー
+/**
+ * 画面上部のヘッダーコンポーネント
+ * バックボタン（オプション）とタイトル、メニューボタン（店舗選択後）を表示
+ */
 const Header = ({ title, showBack = false }: HeaderProps) => {
     const navigate = useNavigate();
     const { isStoreSelected } = useStore();

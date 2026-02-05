@@ -1,12 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import "./SettingsDetailPage.css";
 
-// 設定詳細ページ
+/**
+ * 設定詳細ページ
+ * 言語設定・通知設定などのアプリ設定を管理
+ * localStorage で言語選択を保存
+ */
 const SettingsDetailPage = () => {
+    // i18n インスタンスと translate 関数を取得
+    const { i18n, t } = useTranslation();
+    
     const [notifications, setNotifications] = useState(true);
     const [soundEnabled, setSoundEnabled] = useState(true);
-    const [language, setLanguage] = useState("ja");
+    // 現在の言語設定（localStorage から初期値を取得）
+    const [language, setLanguage] = useState(() => {
+        if (typeof window !== "undefined") {
+            return localStorage.getItem("language") || "ja";
+        }
+        return "ja";
+    });
+
+    // 言語変更時の処理
+    useEffect(() => {
+        if (language) {
+            i18n.changeLanguage(language);
+            if (typeof window !== "undefined") {
+                localStorage.setItem("language", language);
+            }
+        }
+    }, [language, i18n]);
+
+    /**
+     * 言語変更ハンドラー
+     * @param {string} newLanguage - 選択された言語コード
+     * dropdown での選択変更時に呼ばれ、i18nを更新してlocalStorageに保存
+     */
+    const handleLanguageChange = (newLanguage: string) => {
+        setLanguage(newLanguage);
+    };
 
     return (
         <div className="settings-detail-page">
@@ -57,7 +90,7 @@ const SettingsDetailPage = () => {
                         <select
                             className="setting-select"
                             value={language}
-                            onChange={(event) => setLanguage(event.target.value)}
+                            onChange={(event) => handleLanguageChange(event.target.value)}
                         >
                             <option value="ja">日本語</option>
                             <option value="en">English</option>

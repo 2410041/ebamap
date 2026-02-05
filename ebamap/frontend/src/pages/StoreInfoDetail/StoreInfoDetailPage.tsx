@@ -2,7 +2,11 @@ import Header from "../../components/Header/Header";
 import { useStore } from "../../context/StoreContext";
 import "./StoreInfoDetailPage.css";
 
-// 店舗情報詳細ページ
+/**
+ * 店舗情報詳細ページ
+ * 選択した店舗の詳細情報（住所、電話、アクセス方法）を表示
+ * バスや駅でのアクセス情報も含む
+ */
 const StoreInfoDetailPage = () => {
     const { currentStore } = useStore();
 

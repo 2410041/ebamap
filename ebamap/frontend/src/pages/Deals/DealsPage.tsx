@@ -5,6 +5,10 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import type { Product } from "../../types/Product.ts";
 import "./DealsPage.css";
 
+/**
+ * 特売情報ページ
+ * 本日の特売や週末セール等、現在実施中のセール情報を表示
+ */
 const DealsPage = () => {
     const navigate = useNavigate();
 
@@ -32,6 +36,11 @@ const DealsPage = () => {
         }
     ];
 
+    /**
+     * セール商品をクリックした時のハンドラー
+     * マップページ（売場位置表示）へ遷移
+     * @param {Product} deal - クリックされたセール商品
+     */
     const handleDealClick = (deal: Product) => {
         navigate("/map", { state: { product: deal } });
     };

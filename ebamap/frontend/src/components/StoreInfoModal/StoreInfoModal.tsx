@@ -36,7 +36,9 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
                     <div className="store-card">
                         <div className="store-icon">
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                {/* 建物の屋根部分：三角形 */}
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                {/* 建物の中央ドア部分：縦の区切り */}
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
                             </svg>
                         </div>
@@ -45,7 +47,19 @@ const StoreInfoModal = ({ isOpen, onClose }: StoreInfoModalProps) => {
                             <h3>{currentStore.name}</h3>
                             <div className="store-hours">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    {/* 
+                                      時計の本体：中心(12,12)、半径10の円
+                                      cx="12" cy="12" = 中心座標
+                                      r="10" = 半径
+                                    */}
                                     <circle cx="12" cy="12" r="10"></circle>
+                                    {/* 
+                                      時計の針：3つの座標を結ぶ
+                                      (12,6) = 12時方向（上）
+                                      (12,12) = 中心点
+                                      (16,14) = 4時～5時方向（右下）
+                                      結果：時計が約3時20分頃を指している状態
+                                    */}
                                     <polyline points="12 6 12 12 16 14"></polyline>
                                 </svg>
                                 <span>

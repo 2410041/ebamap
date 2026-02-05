@@ -5,6 +5,11 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import type { Product } from "../../types/Product.ts";
 import "./FavoritesPage.css";
 
+/**
+ * お気に入り登録ページ
+ * ユーザーが保存したお気に入りの商品一覧を表示
+ * ローカルストレージから保存データを読み込み表示
+ */
 const FavoritesPage = () => {
     const navigate = useNavigate();
 
@@ -15,7 +20,11 @@ const FavoritesPage = () => {
         { id: 3, name: "米", location: "売場番号: 5-1F" },
     ];
 
-    // マップへ遷移
+    /**
+     * お気に入り商品をクリックした時のハンドラー
+     * マップページ（売場位置表示）へ遷移
+     * @param {Product} product - クリックされたお気に入り商品
+     */
     const handleProductClick = (product: Product) => {
         navigate("/map", { state: { product } });
     };

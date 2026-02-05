@@ -4,11 +4,17 @@
 // 電話番号は 0 や - で始まるため number 型ではなく string 型で扱う
 export interface Store {
     id: string;
+    // 店舗名
     name: string;
+    // 開店時間
     openTime: string;
+    // 閉店時間
     closeTime: string;
+    // 店の固定電話番号
     tell: string;
+    // 郵便番号
     postCode: string;
+    // 住所
     address?: string;
     // 最寄り駅
     nearestStation?: string;

@@ -10,7 +10,9 @@ import "./SettingsDetailPage.css";
  */
 const SettingsDetailPage = () => {
     // i18n インスタンスと translate 関数を取得
-    const { i18n } = useTranslation();
+    // t: translate
+    // tを translate に名前を変えて使用
+    const { i18n, t: translate } = useTranslation();
     
     const [notifications, setNotifications] = useState(true);
     const [soundEnabled, setSoundEnabled] = useState(true);
@@ -34,16 +36,16 @@ const SettingsDetailPage = () => {
 
     return (
         <div className="settings-detail-page">
-            <Header title="設定" showBack={true} />
+            <Header title={translate("settingsDetail.title")} showBack={true} />
 
             <div className="settings-detail-content">
                 {/* 通知設定 */}
                 <div className="setting-section">
-                    <h2 className="section-title">通知</h2>
+                    <h2 className="section-title">{translate("settingsDetail.notification")}</h2>
                     <div className="setting-item">
                         <div className="setting-info">
-                            <span className="setting-label">プッシュ通知</span>
-                            <span className="setting-description">特売情報などを通知</span>
+                            <span className="setting-label">{translate("settingsDetail.pushNotification")}</span>
+                            <span className="setting-description">{translate("settingsDetail.pushDescription")}</span>
                         </div>
                         <label className="toggle-switch">
                             <input
@@ -56,8 +58,8 @@ const SettingsDetailPage = () => {
                     </div>
                     <div className="setting-item">
                         <div className="setting-info">
-                            <span className="setting-label">サウンド</span>
-                            <span className="setting-description">通知音を鳴らす</span>
+                            <span className="setting-label">{translate("settingsDetail.sound")}</span>
+                            <span className="setting-description">{translate("settingsDetail.soundDescription")}</span>
                         </div>
                         <label className="toggle-switch">
                             <input
@@ -72,11 +74,11 @@ const SettingsDetailPage = () => {
 
                 {/* 表示設定 */}
                 <div className="setting-section">
-                    <h2 className="section-title">表示</h2>
+                    <h2 className="section-title">{translate("settingsDetail.display")}</h2>
                     <div className="setting-item">
                         <div className="setting-info">
-                            <span className="setting-label">言語</span>
-                            <span className="setting-description">表示言語の選択</span>
+                            <span className="setting-label">{translate("settingsDetail.language")}</span>
+                            <span className="setting-description">{translate("settingsDetail.languageDescription")}</span>
                         </div>
                         <select
                             className="setting-select"
@@ -94,24 +96,24 @@ const SettingsDetailPage = () => {
 
                 {/* データ管理 */}
                 <div className="setting-section">
-                    <h2 className="section-title">データ</h2>
+                    <h2 className="section-title">{translate("settingsDetail.data")}</h2>
                     <button className="setting-button danger">
-                        検索履歴を削除
+                        {translate("settingsDetail.clearHistory")}
                     </button>
                     <button className="setting-button danger">
-                        お気に入りを削除
+                        {translate("settingsDetail.clearFavorites")}
                     </button>
                 </div>
 
                 {/* アプリ情報 */}
                 <div className="setting-section">
-                    <h2 className="section-title">アプリ情報</h2>
+                    <h2 className="section-title">{translate("settingsDetail.appInfo")}</h2>
                     <div className="info-row">
-                        <span>バージョン</span>
+                        <span>{translate("settingsDetail.version")}</span>
                         <span>1.0.0</span>
                     </div>
                     <div className="info-row">
-                        <span>ビルド番号</span>
+                        <span>{translate("settingsDetail.buildNumber")}</span>
                         <span>2024020101</span>
                     </div>
                 </div>

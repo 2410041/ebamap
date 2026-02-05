@@ -10,7 +10,7 @@ import "./SettingsDetailPage.css";
  */
 const SettingsDetailPage = () => {
     // i18n インスタンスと translate 関数を取得
-    const { i18n, t } = useTranslation();
+    const { i18n } = useTranslation();
     
     const [notifications, setNotifications] = useState(true);
     const [soundEnabled, setSoundEnabled] = useState(true);
@@ -31,15 +31,6 @@ const SettingsDetailPage = () => {
             }
         }
     }, [language, i18n]);
-
-    /**
-     * 言語変更ハンドラー
-     * @param {string} newLanguage - 選択された言語コード
-     * dropdown での選択変更時に呼ばれ、i18nを更新してlocalStorageに保存
-     */
-    const handleLanguageChange = (newLanguage: string) => {
-        setLanguage(newLanguage);
-    };
 
     return (
         <div className="settings-detail-page">
@@ -90,7 +81,7 @@ const SettingsDetailPage = () => {
                         <select
                             className="setting-select"
                             value={language}
-                            onChange={(event) => handleLanguageChange(event.target.value)}
+                            onChange={(event) => setLanguage(event.target.value)}
                         >
                             <option value="ja">日本語</option>
                             <option value="en">English</option>

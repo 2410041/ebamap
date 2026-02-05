@@ -2,6 +2,9 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import jaTranslations from "./locales/ja.json";
 import enTranslations from "./locales/en.json";
+import zhTranslations from "./locales/zh.json";
+import viTranslations from "./locales/vi.json";
+import koTranslations from "./locales/ko.json";
 
 /**
  * i18next 初期化ファイル
@@ -29,6 +32,9 @@ i18next
         resources: {
             ja: { translation: jaTranslations },
             en: { translation: enTranslations },
+            zh: { translation: zhTranslations },
+            vi: { translation: viTranslations },
+            ko: { translation: koTranslations },
         },
         // デフォルト言語
         lng: savedLanguage,

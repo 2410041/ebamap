@@ -1,0 +1,125 @@
+{
+  "header": {
+    "back": "Back"
+  },
+  "navigation": {
+    "search": "Search",
+    "map": "Map",
+    "favorites": "Favorites",
+    "deals": "Deals",
+    "menu": "Menu"
+  },
+  "storeSelect": {
+    "title": "Select Store",
+    "qrCode": "QR Code",
+    "manual": "Manual Select",
+    "selectLabel": "Select a store",
+    "selectButton": "Confirm Store",
+    "selectPlaceholder": "-- Please select a store --",
+    "qrHelp": "Point the store QR code at the camera",
+    "cameraError": "Failed to start camera. Please use manual selection.",
+    "notFound": "Store information not found",
+    "invalidQr": "Invalid QR code"
+  },
+  "search": {
+    "title": "Product Search",
+    "placeholder": "Enter product name",
+    "allCategory": "All",
+    "saleCategory": "Sale",
+    "breadCategory": "Bread",
+    "specialty": "Specialty",
+    "suggestions": ["Milk", "Bread"]
+  },
+  "searchResult": {
+    "title": "Search Results",
+    "noResults": "No results found"
+  },
+  "map": {
+    "title": "Store Map",
+    "placeholder": "Store Map",
+    "location": "Section",
+    "legend": "Floor Guide",
+    "current": "Current Location",
+    "destination": "Destination",
+    "saleArea": "Sale Area"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "saved": "Saved Products",
+    "empty": "No favorites"
+  },
+  "history": {
+    "title": "Search History",
+    "past": "Past Searches",
+    "empty": "No search history",
+    "clearAll": "Clear all history"
+  },
+  "deals": {
+    "title": "Deals",
+    "campaign": "Sales & Campaigns"
+  },
+  "settings": {
+    "title": "Menu",
+    "currentStore": "Current Store",
+    "open": "Open",
+    "closed": "Closed",
+    "changeStore": "Change Store"
+  },
+  "storeInfoDetail": {
+    "title": "Store Information",
+    "basic": "Basic Info",
+    "storeName": "Store Name",
+    "hours": "Hours",
+    "access": "Access",
+    "postCode": "Postal Code",
+    "address": "Address",
+    "phone": "Phone",
+    "station": "Nearest Station",
+    "busStop": "Bus Stop",
+    "busDestination": "Bus Route",
+    "busTime": "Travel Time",
+    "services": "Services",
+    "holiday": "Closed Days"
+  },
+  "settingsDetail": {
+    "title": "Settings",
+    "notification": "Notifications",
+    "pushNotification": "Push Notifications",
+    "pushDescription": "Notify about sales and promotions",
+    "sound": "Sound",
+    "soundDescription": "Play notification sound",
+    "display": "Display",
+    "language": "Language",
+    "languageDescription": "Select display language",
+    "data": "Data",
+    "clearHistory": "Clear Search History",
+    "clearFavorites": "Clear Favorites",
+    "appInfo": "App Info",
+    "version": "Version",
+    "buildNumber": "Build Number"
+  },
+  "help": {
+    "title": "Help",
+    "usage": "How to Use",
+    "step1Title": "Select Store",
+    "step1": "Scan a QR code or select a store from the list",
+    "step2Title": "Search Products",
+    "step2": "Enter a keyword to search for products",
+    "step3Title": "Check Location",
+    "step3": "View product location on the store map",
+    "faq": "Frequently Asked Questions"
+  },
+  "terms": {
+    "title": "Terms of Service"
+  },
+  "privacy": {
+    "title": "Privacy Policy"
+  },
+  "common": {
+    "open": "Open",
+    "closed": "Closed",
+    "viewMap": "View Map",
+    "mapView": "View Map",
+    "mapSee": "View on Map"
+  }
+}

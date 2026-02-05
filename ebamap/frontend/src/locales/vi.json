@@ -1,0 +1,125 @@
+{
+  "header": {
+    "back": "Quay lại"
+  },
+  "navigation": {
+    "search": "Tìm kiếm",
+    "map": "Bản đồ",
+    "favorites": "Yêu thích",
+    "deals": "Ưu đãi",
+    "menu": "Thực đơn"
+  },
+  "storeSelect": {
+    "title": "Chọn cửa hàng",
+    "qrCode": "Mã QR",
+    "manual": "Chọn thủ công",
+    "selectLabel": "Chọn cửa hàng",
+    "selectButton": "Xác nhận cửa hàng",
+    "selectPlaceholder": "-- Vui lòng chọn cửa hàng --",
+    "qrHelp": "Hướng mã QR cửa hàng về phía camera",
+    "cameraError": "Không thể khởi động camera. Vui lòng sử dụng lựa chọn thủ công.",
+    "notFound": "Không tìm thấy thông tin cửa hàng",
+    "invalidQr": "Mã QR không hợp lệ"
+  },
+  "search": {
+    "title": "Tìm kiếm sản phẩm",
+    "placeholder": "Nhập tên sản phẩm",
+    "allCategory": "Tất cả",
+    "saleCategory": "Bán",
+    "breadCategory": "Bánh mì",
+    "specialty": "Đặc sản",
+    "suggestions": ["Sữa", "Bánh mì"]
+  },
+  "searchResult": {
+    "title": "Kết quả tìm kiếm",
+    "noResults": "Không tìm thấy kết quả"
+  },
+  "map": {
+    "title": "Bản đồ cửa hàng",
+    "placeholder": "Bản đồ cửa hàng",
+    "location": "Phần",
+    "legend": "Hướng dẫn tầng",
+    "current": "Vị trí hiện tại",
+    "destination": "Điểm đến",
+    "saleArea": "Khu vực bán hàng"
+  },
+  "favorites": {
+    "title": "Yêu thích",
+    "saved": "Sản phẩm đã lưu",
+    "empty": "Không có mục yêu thích"
+  },
+  "history": {
+    "title": "Lịch sử tìm kiếm",
+    "past": "Các tìm kiếm trước đó",
+    "empty": "Không có lịch sử tìm kiếm",
+    "clearAll": "Xóa tất cả lịch sử"
+  },
+  "deals": {
+    "title": "Ưu đãi",
+    "campaign": "Khuyến mại và chiến dịch"
+  },
+  "settings": {
+    "title": "Thực đơn",
+    "currentStore": "Cửa hàng hiện tại",
+    "open": "Đang mở cửa",
+    "closed": "Đã đóng cửa",
+    "changeStore": "Thay đổi cửa hàng"
+  },
+  "storeInfoDetail": {
+    "title": "Thông tin cửa hàng",
+    "basic": "Thông tin cơ bản",
+    "storeName": "Tên cửa hàng",
+    "hours": "Giờ làm việc",
+    "access": "Truy cập",
+    "postCode": "Mã bưu chính",
+    "address": "Địa chỉ",
+    "phone": "Điện thoại",
+    "station": "Ga gần nhất",
+    "busStop": "Bến xe buýt",
+    "busDestination": "Tuyến xe buýt",
+    "busTime": "Thời gian di chuyển",
+    "services": "Dịch vụ",
+    "holiday": "Ngày nghỉ"
+  },
+  "settingsDetail": {
+    "title": "Cài đặt",
+    "notification": "Thông báo",
+    "pushNotification": "Thông báo đẩy",
+    "pushDescription": "Thông báo về doanh số bán hàng và khuyến mại",
+    "sound": "Âm thanh",
+    "soundDescription": "Phát âm thanh thông báo",
+    "display": "Hiển thị",
+    "language": "Ngôn ngữ",
+    "languageDescription": "Chọn ngôn ngữ hiển thị",
+    "data": "Dữ liệu",
+    "clearHistory": "Xóa lịch sử tìm kiếm",
+    "clearFavorites": "Xóa yêu thích",
+    "appInfo": "Thông tin ứng dụng",
+    "version": "Phiên bản",
+    "buildNumber": "Số bản dựng"
+  },
+  "help": {
+    "title": "Trợ giúp",
+    "usage": "Cách sử dụng",
+    "step1Title": "Chọn cửa hàng",
+    "step1": "Quét mã QR hoặc chọn cửa hàng từ danh sách",
+    "step2Title": "Tìm kiếm sản phẩm",
+    "step2": "Nhập từ khóa để tìm kiếm sản phẩm",
+    "step3Title": "Kiểm tra vị trí",
+    "step3": "Xem vị trí sản phẩm trên bản đồ cửa hàng",
+    "faq": "Câu hỏi thường gặp"
+  },
+  "terms": {
+    "title": "Điều khoản dịch vụ"
+  },
+  "privacy": {
+    "title": "Chính sách bảo mật"
+  },
+  "common": {
+    "open": "Đang mở cửa",
+    "closed": "Đã đóng cửa",
+    "viewMap": "Xem bản đồ",
+    "mapView": "Xem bản đồ",
+    "mapSee": "Xem trên bản đồ"
+  }
+}

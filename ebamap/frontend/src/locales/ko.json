@@ -1,0 +1,125 @@
+{
+  "header": {
+    "back": "돌아가기"
+  },
+  "navigation": {
+    "search": "검색",
+    "map": "지도",
+    "favorites": "즐겨찾기",
+    "deals": "특가",
+    "menu": "메뉴"
+  },
+  "storeSelect": {
+    "title": "매장 선택",
+    "qrCode": "QR코드",
+    "manual": "수동 선택",
+    "selectLabel": "매장 선택",
+    "selectButton": "매장 확인",
+    "selectPlaceholder": "-- 매장을 선택하세요 --",
+    "qrHelp": "매장 QR코드를 카메라에 비춰주세요",
+    "cameraError": "카메라 시작에 실패했습니다. 수동 선택을 사용하세요.",
+    "notFound": "매장 정보를 찾을 수 없습니다",
+    "invalidQr": "유효하지 않은 QR코드입니다"
+  },
+  "search": {
+    "title": "상품 검색",
+    "placeholder": "상품명 입력",
+    "allCategory": "전체",
+    "saleCategory": "판매",
+    "breadCategory": "빵",
+    "specialty": "특산품",
+    "suggestions": ["우유", "빵"]
+  },
+  "searchResult": {
+    "title": "검색 결과",
+    "noResults": "검색 결과가 없습니다"
+  },
+  "map": {
+    "title": "매장 지도",
+    "placeholder": "매장 지도",
+    "location": "섹션",
+    "legend": "층 안내",
+    "current": "현재 위치",
+    "destination": "목적지",
+    "saleArea": "세일 지역"
+  },
+  "favorites": {
+    "title": "즐겨찾기",
+    "saved": "저장된 상품",
+    "empty": "즐겨찾기가 없습니다"
+  },
+  "history": {
+    "title": "검색 기록",
+    "past": "이전 검색",
+    "empty": "검색 기록이 없습니다",
+    "clearAll": "모든 기록 삭제"
+  },
+  "deals": {
+    "title": "특가",
+    "campaign": "판매 및 캠페인"
+  },
+  "settings": {
+    "title": "메뉴",
+    "currentStore": "현재 매장",
+    "open": "영업 중",
+    "closed": "영업 종료",
+    "changeStore": "매장 변경"
+  },
+  "storeInfoDetail": {
+    "title": "매장 정보",
+    "basic": "기본 정보",
+    "storeName": "매장명",
+    "hours": "영업 시간",
+    "access": "접근",
+    "postCode": "우편번호",
+    "address": "주소",
+    "phone": "전화",
+    "station": "가장 가까운 역",
+    "busStop": "버스 정류장",
+    "busDestination": "버스 노선",
+    "busTime": "이동 시간",
+    "services": "서비스",
+    "holiday": "휴무일"
+  },
+  "settingsDetail": {
+    "title": "설정",
+    "notification": "알림",
+    "pushNotification": "푸시 알림",
+    "pushDescription": "판매 및 프로모션 알림",
+    "sound": "소리",
+    "soundDescription": "알림 소리 재생",
+    "display": "표시",
+    "language": "언어",
+    "languageDescription": "표시 언어 선택",
+    "data": "데이터",
+    "clearHistory": "검색 기록 삭제",
+    "clearFavorites": "즐겨찾기 삭제",
+    "appInfo": "앱 정보",
+    "version": "버전",
+    "buildNumber": "빌드 번호"
+  },
+  "help": {
+    "title": "도움말",
+    "usage": "사용 방법",
+    "step1Title": "매장 선택",
+    "step1": "QR코드를 스캔하거나 목록에서 매장 선택",
+    "step2Title": "상품 검색",
+    "step2": "키워드를 입력하여 상품 검색",
+    "step3Title": "위치 확인",
+    "step3": "매장 지도에서 상품 위치 확인",
+    "faq": "자주 묻는 질문"
+  },
+  "terms": {
+    "title": "서비스 약관"
+  },
+  "privacy": {
+    "title": "개인정보 보호정책"
+  },
+  "common": {
+    "open": "영업 중",
+    "closed": "영업 종료",
+    "viewMap": "지도 보기",
+    "mapView": "지도 보기",
+    "mapSee": "지도에서 보기"
+  }
+}

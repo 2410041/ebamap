@@ -1,0 +1,125 @@
+{
+  "header": {
+    "back": "返回"
+  },
+  "navigation": {
+    "search": "搜索",
+    "map": "地图",
+    "favorites": "收藏夹",
+    "deals": "优惠",
+    "menu": "菜单"
+  },
+  "storeSelect": {
+    "title": "选择商店",
+    "qrCode": "二维码",
+    "manual": "手动选择",
+    "selectLabel": "选择商店",
+    "selectButton": "确认商店",
+    "selectPlaceholder": "-- 请选择商店 --",
+    "qrHelp": "将商店二维码对着摄像头",
+    "cameraError": "摄像头启动失败。请使用手动选择。",
+    "notFound": "未找到商店信息",
+    "invalidQr": "无效的二维码"
+  },
+  "search": {
+    "title": "商品搜索",
+    "placeholder": "输入商品名称",
+    "allCategory": "全部",
+    "saleCategory": "销售",
+    "breadCategory": "面包",
+    "specialty": "特产",
+    "suggestions": ["牛奶", "面包"]
+  },
+  "searchResult": {
+    "title": "搜索结果",
+    "noResults": "未找到结果"
+  },
+  "map": {
+    "title": "商店地图",
+    "placeholder": "商店地图",
+    "location": "部分",
+    "legend": "楼层指南",
+    "current": "当前位置",
+    "destination": "目的地",
+    "saleArea": "销售区域"
+  },
+  "favorites": {
+    "title": "收藏夹",
+    "saved": "已保存的产品",
+    "empty": "没有收藏夹"
+  },
+  "history": {
+    "title": "搜索历史",
+    "past": "过去的搜索",
+    "empty": "没有搜索历史",
+    "clearAll": "清除所有历史"
+  },
+  "deals": {
+    "title": "优惠",
+    "campaign": "销售和活动"
+  },
+  "settings": {
+    "title": "菜单",
+    "currentStore": "当前商店",
+    "open": "营业中",
+    "closed": "休息中",
+    "changeStore": "更改商店"
+  },
+  "storeInfoDetail": {
+    "title": "商店信息",
+    "basic": "基本信息",
+    "storeName": "商店名称",
+    "hours": "营业时间",
+    "access": "访问",
+    "postCode": "邮编",
+    "address": "地址",
+    "phone": "电话",
+    "station": "最近的车站",
+    "busStop": "公交车站",
+    "busDestination": "公交路线",
+    "busTime": "旅行时间",
+    "services": "服务",
+    "holiday": "休息日"
+  },
+  "settingsDetail": {
+    "title": "设置",
+    "notification": "通知",
+    "pushNotification": "推送通知",
+    "pushDescription": "关于销售和促销的通知",
+    "sound": "声音",
+    "soundDescription": "播放通知声音",
+    "display": "显示",
+    "language": "语言",
+    "languageDescription": "选择显示语言",
+    "data": "数据",
+    "clearHistory": "清除搜索历史",
+    "clearFavorites": "清除收藏夹",
+    "appInfo": "应用信息",
+    "version": "版本",
+    "buildNumber": "构建号"
+  },
+  "help": {
+    "title": "帮助",
+    "usage": "使用方法",
+    "step1Title": "选择商店",
+    "step1": "扫描二维码或从列表中选择商店",
+    "step2Title": "搜索产品",
+    "step2": "输入关键字搜索产品",
+    "step3Title": "检查位置",
+    "step3": "在商店地图上查看产品位置",
+    "faq": "常见问题"
+  },
+  "terms": {
+    "title": "服务条款"
+  },
+  "privacy": {
+    "title": "隐私政策"
+  },
+  "common": {
+    "open": "营业中",
+    "closed": "休息中",
+    "viewMap": "查看地图",
+    "mapView": "查看地图",
+    "mapSee": "在地图上查看"
+  }
+}

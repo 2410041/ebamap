@@ -1,0 +1,125 @@
+{
+  "header": {
+    "back": "戻る"
+  },
+  "navigation": {
+    "search": "検索",
+    "map": "マップ",
+    "favorites": "お気に入り",
+    "deals": "特売",
+    "menu": "メニュー"
+  },
+  "storeSelect": {
+    "title": "店舗選択",
+    "qrCode": "QRコード",
+    "manual": "手動選択",
+    "selectLabel": "店舗を選択",
+    "selectButton": "この店舗で決定",
+    "selectPlaceholder": "-- 店舗を選んでください --",
+    "qrHelp": "店舗のQRコードをカメラに向けてください",
+    "cameraError": "カメラの起動に失敗しました。手動選択をご利用ください。",
+    "notFound": "店舗情報が見つかりませんでした",
+    "invalidQr": "無効なQRコードです"
+  },
+  "search": {
+    "title": "商品検索",
+    "placeholder": "商品名を入力",
+    "allCategory": "すべて",
+    "saleCategory": "特売",
+    "breadCategory": "パン",
+    "specialty": "特産",
+    "suggestions": ["牛乳", "パン"]
+  },
+  "searchResult": {
+    "title": "検索結果",
+    "noResults": "検索結果がありません"
+  },
+  "map": {
+    "title": "店内マップ",
+    "placeholder": "店内マップ",
+    "location": "売場番号",
+    "legend": "フロアガイド",
+    "current": "現在地",
+    "destination": "目的地",
+    "saleArea": "特売エリア"
+  },
+  "favorites": {
+    "title": "お気に入り",
+    "saved": "保存した商品",
+    "empty": "お気に入りはありません"
+  },
+  "history": {
+    "title": "検索履歴",
+    "past": "過去の検索",
+    "empty": "検索履歴はありません",
+    "clearAll": "全履歴を削除"
+  },
+  "deals": {
+    "title": "特売情報",
+    "campaign": "セール・キャンペーン"
+  },
+  "settings": {
+    "title": "メニュー",
+    "currentStore": "現在の店舗",
+    "open": "営業中",
+    "closed": "営業時間外",
+    "changeStore": "店舗を変更する"
+  },
+  "storeInfoDetail": {
+    "title": "店舗情報",
+    "basic": "基本情報",
+    "storeName": "店舗名",
+    "hours": "営業時間",
+    "access": "アクセス",
+    "postCode": "郵便番号",
+    "address": "住所",
+    "phone": "電話番号",
+    "station": "最寄り駅",
+    "busStop": "バス停名",
+    "busDestination": "バスの行き先",
+    "busTime": "バスや徒歩での所要時間",
+    "services": "サービス",
+    "holiday": "定休日"
+  },
+  "settingsDetail": {
+    "title": "設定",
+    "notification": "通知",
+    "pushNotification": "プッシュ通知",
+    "pushDescription": "特売情報などを通知",
+    "sound": "サウンド",
+    "soundDescription": "通知音を鳴らす",
+    "display": "表示",
+    "language": "言語",
+    "languageDescription": "表示言語の選択",
+    "data": "データ",
+    "clearHistory": "検索履歴を削除",
+    "clearFavorites": "お気に入りを削除",
+    "appInfo": "アプリ情報",
+    "version": "バージョン",
+    "buildNumber": "ビルド番号"
+  },
+  "help": {
+    "title": "ヘルプ",
+    "usage": "アプリの使い方",
+    "step1Title": "店舗を選択",
+    "step1": "QRコードをスキャンするか、リストから店舗を選択します",
+    "step2Title": "商品を検索",
+    "step2": "キーワードを入力して商品を検索します",
+    "step3Title": "売場を確認",
+    "step3": "売場マップで商品の位置を確認します",
+    "faq": "よくある質問"
+  },
+  "terms": {
+    "title": "利用規約"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー"
+  },
+  "common": {
+    "open": "営業中",
+    "closed": "営業時間外",
+    "viewMap": "売場地図",
+    "mapView": "マップを見る",
+    "mapSee": "マップで見る"
+  }
+}

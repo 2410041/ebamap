@@ -89,4 +89,4 @@ app.listen(PORT, () => {
     console.log(`   GET /api/python          - Python calculation test`);
 });
 
-module.exports = global;
+module.exports = global.db;

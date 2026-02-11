@@ -68,21 +68,3 @@ CREATE TABLE campaigns (
   end_date DATE '終了日',
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
-
--- 初期データ（テストプレイ用）
-
--- 店舗（1階固定）
-INSERT INTO stores (name, floor, lat, lng)
-VALUES ('テストスーパー', 1, 35.0, 135.0);
-
--- カテゴリ
-INSERT INTO categories (name)
-VALUES ('飲料'), ('食品'), ('日用品');
-
--- 商品（1階・売り場座標）
-INSERT INTO products (store_id, category_id, name, floor, x, y)
-VALUES
-  (1, 1, '牛乳', 1, 120, 300),
-  (1, 1, 'お茶', 1, 150, 280),
-  (1, 2, 'パン', 1, 200, 350),
-  (1, 3, '洗剤', 1, 80, 400);

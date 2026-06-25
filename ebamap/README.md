@@ -1,75 +1,308 @@
-# React + TypeScript + Vite
+## デザイン方針
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+スーパーエバグリーンのイメージカラーである「緑」を基調にした、スマホ向けPWAデザインにしてください。
 
-Currently, two official plugins are available:
+ただし、公式ロゴや公式デザインを完全コピーするのではなく、スーパー・ドラッグストア系アプリとして自然に見えるオリジナルデザインにしてください。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## デザインコンセプト
 
-## React Compiler
+テーマは以下です。
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* 地域密着
+* 清潔感
+* 安心感
+* お得感
+* 片手で操作しやすい
+* 店員もお客様も迷わず使える
 
-Note: This will impact Vite dev & build performances.
+アプリ全体は「商品を探しやすい」「ポイント対象商品が分かりやすい」「売場がすぐ分かる」ことを最優先にしてください。
 
-## Expanding the ESLint configuration
+## カラーパレット
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+CSS変数として以下の色を定義してください。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```css
+:root {
+  --color-primary: #0B8F3A;
+  --color-primary-dark: #066B2A;
+  --color-primary-light: #E8F7EE;
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  --color-accent: #F6C343;
+  --color-accent-light: #FFF6D8;
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  --color-danger: #E54848;
+  --color-info: #2F80ED;
+
+  --color-bg: #F6F8F5;
+  --color-surface: #FFFFFF;
+  --color-border: #DDE5DD;
+
+  --color-text: #1F2A24;
+  --color-text-sub: #6B756E;
+
+  --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --radius-card: 18px;
+  --radius-button: 999px;
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 全体レイアウト
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+スマホ利用を前提に、縦長のアプリ画面として作成してください。
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* 背景は薄いグリーン系または白にする
+* ヘッダーは緑を基調にする
+* 主要ボタンは濃い緑
+* ポイント対象商品やお得情報は黄色系アクセントを使う
+* 商品カードは白背景、角丸、薄い影を付ける
+* 文字は黒に近い濃いグレーで読みやすくする
+* 余白を広めに取り、押し間違いを減らす
+
+## ヘッダー
+
+ヘッダーには以下を表示してください。
+
+* アプリ名：EBAMAP
+* 選択中の店舗名
+* 店舗変更ボタン
+
+デザインは、緑背景に白文字を基本にしてください。
+
+例：
+
+* 背景：`--color-primary`
+* 文字：白
+* 角丸下部または柔らかい影を付ける
+
+## 下部タブメニュー
+
+スマホアプリらしく、下部に固定タブメニューを配置してください。
+
+タブ項目：
+
+* 検索
+* マップ
+* ポイント
+* お気に入り
+* 履歴
+
+デザイン：
+
+* 白背景
+* 上に薄い影
+* 選択中タブは緑
+* 未選択タブはグレー
+* アイコンと文字を縦並び
+* 親指で押しやすい高さにする
+
+## 商品カード
+
+商品検索結果やポイント対象商品で使うカードを作成してください。
+
+表示内容：
+
+* 商品画像
+* 商品名
+* カテゴリ
+* 売場説明
+* 在庫状態
+* ポイント対象表示
+* お気に入りボタン
+* マップで見るボタン
+
+デザイン：
+
+* 白背景
+* 角丸
+* 影あり
+* 商品画像は左、情報は右
+* ポイント対象商品の場合は黄色のラベルを表示
+
+例：
+
+```txt
++50pt
+実質 148円
 ```
+
+のように、お得感が分かる表示にしてください。
+
+## ポイント対象商品ページ
+
+ポイント対象商品ページは、お客様が一目で「何を買えばポイントが付くか」分かるようにしてください。
+
+デザイン方針：
+
+* ページ上部に「今週のポイント対象商品」と表示
+* ポイント数を大きく表示
+* 黄色アクセントを使う
+* 実質価格を分かりやすく表示
+* 「マップで見る」ボタンを緑で表示
+
+例：
+
+```txt
+雪印コーヒー
+198円
++50pt
+実質148円
+乳製品コーナー
+```
+
+## 商品検索画面
+
+検索画面は最重要画面なので、非常に分かりやすくしてください。
+
+必要要素：
+
+* 大きめの検索バー
+* カテゴリ選択
+* 最近の検索履歴
+* よく探される商品
+* ポイント対象商品への導線
+
+検索バーは画面上部に固定気味に配置し、片手で入力しやすいデザインにしてください。
+
+## 店内マップ画面
+
+店内マップ画面では、店内マップ画像の上に商品位置ピンを表示してください。
+
+デザイン：
+
+* マップ画像をカード内に表示
+* 商品位置に緑または赤のピンを表示
+* 選択中の商品ピンは目立たせる
+* 下部に商品情報カードを表示
+
+商品情報カードには以下を表示してください。
+
+* 商品名
+* 売場説明
+* 在庫状態
+* ポイント対象かどうか
+
+## 在庫表示
+
+在庫状態は色で分かりやすくしてください。
+
+* 在庫あり：緑
+* 残りわずか：黄色
+* 在庫なし：赤
+* 不明：グレー
+
+ただし、文字だけでなくラベルでも表示してください。
+
+例：
+
+```txt
+在庫あり
+残りわずか
+在庫なし
+確認中
+```
+
+## お気に入り画面
+
+お気に入り画面では、登録した商品をカード形式で表示してください。
+
+お気に入り商品がポイント対象になっている場合は、カード上部に目立つラベルを表示してください。
+
+例：
+
+```txt
+お気に入り商品がポイント対象です
++30pt
+```
+
+## 検索履歴画面
+
+検索履歴はシンプルにしてください。
+
+* 最近検索したキーワードを一覧表示
+* タップすると再検索
+* 履歴削除ボタンを設置
+
+履歴はタグ形式またはカード形式で表示してください。
+
+## 店舗選択画面
+
+店舗選択画面は、初回起動時に表示してください。
+
+デザイン：
+
+* 緑のヘッダー
+* 店舗カードを一覧表示
+* 店舗名を大きく表示
+* 住所と営業時間を表示
+* 選択ボタンを緑で表示
+
+## ボタンデザイン
+
+主要ボタン：
+
+* 背景：`--color-primary`
+* 文字：白
+* 角丸：999px
+* 高さ：44px以上
+
+サブボタン：
+
+* 背景：`--color-primary-light`
+* 文字：`--color-primary-dark`
+* 枠線なしまたは薄い緑
+
+危険操作ボタン：
+
+* 赤系
+* 履歴削除やお気に入り解除などに使用
+
+## フォント・文字サイズ
+
+スマホで読みやすいようにしてください。
+
+目安：
+
+* ページタイトル：22px〜24px
+* セクションタイトル：18px〜20px
+* 商品名：16px〜18px
+* 通常テキスト：14px〜16px
+* 補足テキスト：12px〜13px
+
+フォントはシステムフォントを使用してください。
+
+```css
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+```
+
+## UIで重視すること
+
+以下を必ず意識してください。
+
+* 高齢のお客様でも見やすい
+* 店員が忙しい時間帯でもすぐ操作できる
+* 商品の場所が一目で分かる
+* ポイント対象商品が目立つ
+* 操作ボタンを小さくしすぎない
+* 緑を使いすぎず、白背景で清潔感を出す
+* 情報を詰め込みすぎない
+
+## デザインの方向性
+
+全体的には以下のような雰囲気にしてください。
+
+* 緑：ブランド感・安心感
+* 白：清潔感
+* 黄色：お得感・ポイント
+* 角丸：やさしい印象
+* カードUI：スマホアプリらしさ
+* 下部タブ：PWAをアプリっぽく見せる
+
+## 重要
+
+このアプリは、単なる商品一覧アプリではなく、
+
+「お客様と店員が、商品を探す時間を減らすための店内案内アプリ」
+
+です。
+
+そのため、デザインは見た目のきれいさだけでなく、現場での使いやすさを最優先してください。

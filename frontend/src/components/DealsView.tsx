@@ -1,14 +1,15 @@
 import { ProductCard } from "./ProductCard";
-import type { Deal } from "../types";
+import type { Deal, Product } from "../types";
 
 interface DealsViewProps {
   deals: Deal[];
   favorites: number[];
   onToggleFavorite: (productId: number) => void;
   onShowMap: (productId: number) => void;
+  onOpenDetail: (product: Product | Deal) => void;
 }
 
-export function DealsView({ deals, favorites, onToggleFavorite, onShowMap }: DealsViewProps) {
+export function DealsView({ deals, favorites, onToggleFavorite, onShowMap, onOpenDetail }: DealsViewProps) {
   return (
     <section className="screen">
       <section className="panel panel-accent">
@@ -27,6 +28,7 @@ export function DealsView({ deals, favorites, onToggleFavorite, onShowMap }: Dea
               isFavorite={favorites.includes(deal.id)}
               onToggleFavorite={onToggleFavorite}
               onShowMap={onShowMap}
+              onOpenDetail={onOpenDetail}
               variant="deal"
             />
           ))}

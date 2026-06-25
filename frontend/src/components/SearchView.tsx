@@ -1,5 +1,7 @@
-import type { Category, Product } from "../types";
+import type { Category, Deal, Notice, Product, ShoppingListItem } from "../types";
+import { NoticesSection } from "./NoticesSection";
 import { ProductCard } from "./ProductCard";
+import { ShoppingListSection } from "./ShoppingListSection";
 
 interface SearchViewProps {
   categories: Category[];
@@ -12,9 +14,14 @@ interface SearchViewProps {
   recommendedProducts: Product[];
   searchHistory: string[];
   favorites: number[];
+  shoppingList: ShoppingListItem[];
+  notices: Notice[];
   onHistorySelect: (keyword: string) => void;
   onToggleFavorite: (productId: number) => void;
   onShowMap: (productId: number) => void;
+  onOpenDetail: (product: Product | Deal) => void;
+  onToggleShoppingChecked: (productId: number) => void;
+  onClearShoppingList: () => void;
 }
 
 export function SearchView({
@@ -28,9 +35,14 @@ export function SearchView({
   recommendedProducts,
   searchHistory,
   favorites,
+  shoppingList,
+  notices,
   onHistorySelect,
   onToggleFavorite,
   onShowMap,
+  onOpenDetail,
+  onToggleShoppingChecked,
+  onClearShoppingList,
 }: SearchViewProps) {
   return (
     <section className="screen">
@@ -64,6 +76,16 @@ export function SearchView({
         </div>
       </div>
 
+      <NoticesSection notices={notices} />
+
+      <ShoppingListSection
+        items={shoppingList}
+        products={[...recommendedProducts, ...products]}
+        onToggleChecked={onToggleShoppingChecked}
+        onClear={onClearShoppingList}
+        onOpenDetail={onOpenDetail}
+      />
+
       <section className="panel">
         <div className="section-head">
           <h3>最近の検索履歴</h3>
@@ -90,6 +112,7 @@ export function SearchView({
               isFavorite={favorites.includes(product.id)}
               onToggleFavorite={onToggleFavorite}
               onShowMap={onShowMap}
+              onOpenDetail={onOpenDetail}
             />
           ))}
         </div>
@@ -108,6 +131,7 @@ export function SearchView({
               isFavorite={favorites.includes(product.id)}
               onToggleFavorite={onToggleFavorite}
               onShowMap={onShowMap}
+              onOpenDetail={onOpenDetail}
             />
           ))}
           {products.length === 0 ? <p className="empty-copy">条件に合う商品が見つかりません。</p> : null}

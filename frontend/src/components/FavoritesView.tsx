@@ -1,14 +1,15 @@
 import { ProductCard } from "./ProductCard";
-import type { Product } from "../types";
+import type { Deal, Product } from "../types";
 
 interface FavoritesViewProps {
   products: Product[];
   favorites: number[];
   onToggleFavorite: (productId: number) => void;
   onShowMap: (productId: number) => void;
+  onOpenDetail: (product: Product | Deal) => void;
 }
 
-export function FavoritesView({ products, favorites, onToggleFavorite, onShowMap }: FavoritesViewProps) {
+export function FavoritesView({ products, favorites, onToggleFavorite, onShowMap, onOpenDetail }: FavoritesViewProps) {
   const favoriteProducts = products.filter((product) => favorites.includes(product.id));
 
   return (
@@ -25,6 +26,7 @@ export function FavoritesView({ products, favorites, onToggleFavorite, onShowMap
               isFavorite
               onToggleFavorite={onToggleFavorite}
               onShowMap={onShowMap}
+              onOpenDetail={onOpenDetail}
             />
           ))}
           {favoriteProducts.length === 0 ? (

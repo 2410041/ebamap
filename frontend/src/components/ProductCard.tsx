@@ -1,11 +1,13 @@
 import { StatusBadge } from "./StatusBadge";
 import type { Deal, Product } from "../types";
+import type { MouseEvent } from "react";
 
 interface ProductCardProps {
   product: Product | Deal;
   isFavorite: boolean;
   onToggleFavorite?: (productId: number) => void;
   onShowMap?: (productId: number) => void;
+  onOpenDetail?: (product: Product | Deal) => void;
   variant?: "default" | "deal";
 }
 
@@ -18,10 +20,21 @@ export function ProductCard({
   isFavorite,
   onToggleFavorite,
   onShowMap,
+  onOpenDetail,
   variant = "default",
 }: ProductCardProps) {
+  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>, action: () => void) => {
+    event.stopPropagation();
+    action();
+  };
+
   return (
-    <article className={`product-card ${variant === "deal" ? "is-deal" : ""}`}>
+    <article
+      className={`product-card ${variant === "deal" ? "is-deal" : ""}`}
+      onClick={() => onOpenDetail?.(product)}
+      role={onOpenDetail ? "button" : undefined}
+      tabIndex={onOpenDetail ? 0 : undefined}
+    >
       <div className={`product-card__thumb tone-${"image_tone" in product ? product.image_tone : "gold"}`}>
         <span>{product.name.slice(0, 2)}</span>
       </div>
@@ -33,7 +46,9 @@ export function ProductCard({
         </div>
 
         <h3>{product.name}</h3>
-        <p className="product-card__subtitle">{product.subtitle}</p>
+        <p className="product-card__subtitle">
+          {"category_name" in product ? `${product.category_name} / ` : ""}{product.subtitle}
+        </p>
         <p className="product-card__location">{product.location_label}</p>
 
         {"campaign_title" in product ? (
@@ -47,12 +62,12 @@ export function ProductCard({
           <strong>{product.price}円</strong>
           <div className="product-card__actions">
             {onToggleFavorite ? (
-              <button className="subtle-button" onClick={() => onToggleFavorite(product.id)}>
+              <button className="subtle-button" onClick={(event) => handleButtonClick(event, () => onToggleFavorite(product.id))}>
                 {isFavorite ? "登録済み" : "お気に入り"}
               </button>
             ) : null}
             {onShowMap ? (
-              <button className="primary-button small" onClick={() => onShowMap(product.id)}>
+              <button className="primary-button small" onClick={(event) => handleButtonClick(event, () => onShowMap(product.id))}>
                 マップで見る
               </button>
             ) : null}

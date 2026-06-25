@@ -5,7 +5,9 @@ import { DealsView } from "./components/DealsView";
 import { FavoritesView } from "./components/FavoritesView";
 import { HistoryView } from "./components/HistoryView";
 import { MapView } from "./components/MapView";
+import { ProductDetailModal } from "./components/ProductDetailModal";
 import { SearchView } from "./components/SearchView";
+import { StoreDetailModal } from "./components/StoreDetailModal";
 import { StoreSelector } from "./components/StoreSelector";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 import {
@@ -17,9 +19,40 @@ import {
   fetchStores,
   searchProducts,
 } from "./services/api";
-import type { AppTab, Category, Deal, Product, Store } from "./types";
+import type { AppTab, Category, Deal, Notice, Product, ShoppingListItem, Store } from "./types";
 
 const POLLING_INTERVAL_MS = 10_000;
+
+const NOTICES: Notice[] = [
+  {
+    id: 1,
+    type: "points",
+    title: "本日のポイントアップ",
+    body: "乳製品と日用品の一部商品がポイント対象です。",
+    dateLabel: "本日",
+  },
+  {
+    id: 2,
+    type: "layout",
+    title: "売場変更",
+    body: "冷凍食品ケースの一部商品を奥側通路へ移動しました。",
+    dateLabel: "6/25",
+  },
+  {
+    id: 3,
+    type: "hours",
+    title: "営業時間変更",
+    body: "棚卸しのため、明日は21:00閉店です。",
+    dateLabel: "明日",
+  },
+  {
+    id: 4,
+    type: "new",
+    title: "新商品入荷",
+    body: "朝食向けの新商品をパン売場に追加しました。",
+    dateLabel: "新着",
+  },
+];
 
 function addHistoryItem(items: string[], keyword: string) {
   const normalized = keyword.trim();
@@ -42,10 +75,13 @@ export default function App() {
   const [selectedStoreId, setSelectedStoreId] = useLocalStorageState<number | null>("ebamap.selectedStoreId", null);
   const [favorites, setFavorites] = useLocalStorageState<number[]>("ebamap.favorites", []);
   const [searchHistory, setSearchHistory] = useLocalStorageState<string[]>("ebamap.searchHistory", []);
+  const [shoppingList, setShoppingList] = useLocalStorageState<ShoppingListItem[]>("ebamap.shoppingList", []);
   const [keyword, setKeyword] = useState("");
   const [submittedKeyword, setSubmittedKeyword] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const [detailProduct, setDetailProduct] = useState<Product | Deal | null>(null);
+  const [isStoreDetailOpen, setIsStoreDetailOpen] = useState(false);
 
   const deferredKeyword = useDeferredValue(submittedKeyword);
 
@@ -115,13 +151,14 @@ export default function App() {
     }, POLLING_INTERVAL_MS);
 
     return () => window.clearInterval(timerId);
-  }, [selectedStoreId, deferredKeyword, selectedCategoryId, syncStoreData]);
+  }, [selectedStoreId, syncStoreData]);
 
   const handleStoreSelect = (storeId: number) => {
     setSelectedStoreId(storeId);
     setSelectedCategoryId(null);
     setSubmittedKeyword("");
     setKeyword("");
+    setIsStoreDetailOpen(false);
     setActiveTab("search");
   };
 
@@ -144,7 +181,24 @@ export default function App() {
 
   const handleShowMap = (productId: number) => {
     setSelectedProductId(productId);
+    setDetailProduct(null);
     setActiveTab("map");
+  };
+
+  const handleAddToShoppingList = (productId: number) => {
+    setShoppingList((current) => {
+      if (current.some((item) => item.productId === productId)) {
+        return current;
+      }
+
+      return [{ productId, checked: false, addedAt: new Date().toISOString() }, ...current];
+    });
+  };
+
+  const handleToggleShoppingChecked = (productId: number) => {
+    setShoppingList((current) =>
+      current.map((item) => (item.productId === productId ? { ...item, checked: !item.checked } : item))
+    );
   };
 
   const allKnownProducts = useMemo(() => {
@@ -166,6 +220,7 @@ export default function App() {
           store={currentStore}
           syncText={isSyncing ? "同期中..." : "10秒ごとに更新"}
           onChangeStore={() => setSelectedStoreId(null)}
+          onOpenStoreDetail={() => setIsStoreDetailOpen(true)}
         />
 
         {activeTab === "search" ? (
@@ -180,9 +235,14 @@ export default function App() {
             recommendedProducts={recommendedProducts}
             searchHistory={searchHistory}
             favorites={favorites}
+            shoppingList={shoppingList}
+            notices={NOTICES}
             onHistorySelect={handleHistorySelect}
             onToggleFavorite={handleToggleFavorite}
             onShowMap={handleShowMap}
+            onOpenDetail={setDetailProduct}
+            onToggleShoppingChecked={handleToggleShoppingChecked}
+            onClearShoppingList={() => setShoppingList([])}
           />
         ) : null}
 
@@ -201,6 +261,7 @@ export default function App() {
             favorites={favorites}
             onToggleFavorite={handleToggleFavorite}
             onShowMap={handleShowMap}
+            onOpenDetail={setDetailProduct}
           />
         ) : null}
 
@@ -210,6 +271,7 @@ export default function App() {
             favorites={favorites}
             onToggleFavorite={handleToggleFavorite}
             onShowMap={handleShowMap}
+            onOpenDetail={setDetailProduct}
           />
         ) : null}
 
@@ -223,6 +285,29 @@ export default function App() {
       </div>
 
       <BottomNav activeTab={activeTab} onChange={setActiveTab} />
+
+      {detailProduct ? (
+        <ProductDetailModal
+          product={detailProduct}
+          isFavorite={favorites.includes(detailProduct.id)}
+          isInShoppingList={shoppingList.some((item) => item.productId === detailProduct.id)}
+          onClose={() => setDetailProduct(null)}
+          onToggleFavorite={handleToggleFavorite}
+          onAddToShoppingList={handleAddToShoppingList}
+          onShowMap={handleShowMap}
+        />
+      ) : null}
+
+      {isStoreDetailOpen ? (
+        <StoreDetailModal
+          store={currentStore}
+          onClose={() => setIsStoreDetailOpen(false)}
+          onChangeStore={() => {
+            setIsStoreDetailOpen(false);
+            setSelectedStoreId(null);
+          }}
+        />
+      ) : null}
     </div>
   );
 }

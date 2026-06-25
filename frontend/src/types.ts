@@ -62,4 +62,18 @@ export interface BootstrapResponse {
   syncIntervalSeconds: number;
 }
 
+export interface ShoppingListItem {
+  productId: number;
+  checked: boolean;
+  addedAt: string;
+}
+
+export interface Notice {
+  id: number;
+  type: "points" | "layout" | "hours" | "new";
+  title: string;
+  body: string;
+  dateLabel: string;
+}
+
 export type AppTab = "search" | "map" | "deals" | "favorites" | "history";
